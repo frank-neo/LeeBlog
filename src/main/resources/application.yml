@@ -1,0 +1,17 @@
+#服务端设置
+server:
+  port: 8080
+  #ip,域名都设置在address
+  address: localhost
+  session:
+    timeout: 30
+  tomcat:
+    max-threads: 0
+    uri-encoding: UTF-8
+#HTTP编码设置
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
