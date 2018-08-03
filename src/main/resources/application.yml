@@ -1,8 +1,8 @@
 #服务端设置
 server:
-  port: 8080
+  port: 80
   #ip,域名都设置在address
-  address: localhost
+  address: 172.16.0.10
   session:
     timeout: 30
   tomcat:
