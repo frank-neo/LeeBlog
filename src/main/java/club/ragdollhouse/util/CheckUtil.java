@@ -1,10 +1,13 @@
 package club.ragdollhouse.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.log4j.Logger;
 
 import java.util.Arrays;
 
 public class CheckUtil {
+
+    private static Logger logger = Logger.getLogger(CheckUtil.class);
     /**
      * 微信公众号taken
      */
@@ -28,7 +31,7 @@ public class CheckUtil {
 
         // sha1加密
         String temp = getSHA1String(content.toString());
-        System.out.println("这个sha1我自己看："+temp);
+        logger.info("这个sha1是我本地加密的："+temp);
         return temp.equals(signature); // 与微信传递过来的签名进行比较
     }
 

@@ -16,3 +16,14 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+#日志设置
+logging:
+  # 日志文件,绝对路径或相对路径（可以设置文件名称）
+  file: /tmp/ragdollhouselog/log.log
+  #file: D:/360Downloads/log.log
+  level:
+    com:
+      favorites: DEBUG
+    org:
+      springframework:
+        web: DEBUG
