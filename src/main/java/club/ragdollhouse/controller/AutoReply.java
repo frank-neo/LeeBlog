@@ -41,7 +41,10 @@ public class AutoReply {
         Map<String, String> map = new HashMap<>();
         for (int i = 0; i < ele.size(); i++) {
             Element el = (Element) ele.get(i);
-            map.put(el.getName(), el.getStringValue());
+            String key = el.getName();
+            String value = el.getStringValue();
+            logger.info("这是xml返回的第"+i+"条数据："+key+"======>"+value);
+            map.put(key, value);
         }
         logger.info("用户发送了一条数据");
         /**

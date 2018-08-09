@@ -2,8 +2,8 @@
 server:
   port: 80
   #ip,域名都设置在address
-  address: 172.16.0.10
-  #address: localhost
+  #address: 172.16.0.10
+  address: localhost
   session:
     timeout: 30
   tomcat:

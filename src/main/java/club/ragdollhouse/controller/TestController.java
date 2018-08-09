@@ -2,23 +2,17 @@ package club.ragdollhouse.controller;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.servlet.ServletInputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class TestController {
@@ -67,12 +61,12 @@ public class TestController {
      * @param res
      */
     @RequestMapping(value = "/testxmlfile", method = RequestMethod.POST)
-    public void testcml(HttpServletRequest request,HttpServletResponse res) throws IOException {
+    public void testcml(HttpServletRequest request, HttpServletResponse res) throws IOException {
 
         res.setContentType("text/xml;charset=UTF-8");
         ServletOutputStream out = res.getOutputStream();
 
-        OutputStreamWriter ow = new OutputStreamWriter(out,"UTF-8");
+        OutputStreamWriter ow = new OutputStreamWriter(out, "UTF-8");
         ow.write("<xml>");
         ow.write("\r\n");
         ow.write("<ToUserName><![CDATA[公众号]]></ToUserName>");
