@@ -6,8 +6,8 @@ import com.alibaba.fastjson.JSON;
 import org.apache.log4j.Logger;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 import java.util.Date;
 import java.util.Timer;
@@ -20,6 +20,7 @@ import java.util.TimerTask;
  *
  * @author Lee
  */
+@Order(1)
 @Component
 public class GetAccessToken implements ApplicationRunner {
 
@@ -32,8 +33,10 @@ public class GetAccessToken implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
+        //定时获取access_taken
         getAccessTokenTimer();
     }
+
 
     /**
      * 定时刷新access_token方法
@@ -57,7 +60,7 @@ public class GetAccessToken implements ApplicationRunner {
                     e.printStackTrace();
                 }
             }
-        }, 1000, 1000L * EXPIRES_IN);
+        }, 0L, 1000L * EXPIRES_IN);
     }
 
     /**

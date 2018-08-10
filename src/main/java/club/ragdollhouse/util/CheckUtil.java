@@ -5,6 +5,10 @@ import org.apache.log4j.Logger;
 
 import java.util.Arrays;
 
+/**
+ * 微信公众号接入taken校验
+ * @author Lee
+ */
 public class CheckUtil {
 
     private static Logger logger = Logger.getLogger(CheckUtil.class);

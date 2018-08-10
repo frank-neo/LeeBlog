@@ -52,6 +52,7 @@ public class AccessTokenUtil {
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                 String str;
                 StringBuffer buffer = new StringBuffer();
+                //如果返回的结果有/n，那么这个解析是有bug的
                 while ((str = bufferedReader.readLine()) != null) {
                     buffer = buffer.append(str);
                 }
@@ -59,9 +60,7 @@ public class AccessTokenUtil {
                 bufferedReader.close();
                 inputStreamReader.close();
                 inputStream.close();
-
                 accessToken = buffer.toString();
-                System.out.println(accessToken);
                 logger.info("accesstokenHttp状态返回正常");
 
             } else {
