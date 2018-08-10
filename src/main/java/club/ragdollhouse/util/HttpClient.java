@@ -57,7 +57,7 @@ public class HttpClient {
 
                 if (conn.getResponseCode() == 200) {
                     reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    //如果返回的结果有/n，那么这个解析是有bug的
+                    //如果返回的结果有/n，那么这个解析是有bug的，此处业务场景没有/n的情况所以没事，解决方案看爬虫的http客户端
                     result = reader.readLine();
                 }
             }
