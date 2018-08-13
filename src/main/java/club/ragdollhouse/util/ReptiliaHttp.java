@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * 爬虫的专属http客户端【测试爬的百度新闻】
+ * 爬虫的专属http客户端
  * @author Lee
  */
 public class ReptiliaHttp {

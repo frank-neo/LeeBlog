@@ -1,9 +1,11 @@
 package club.ragdollhouse.controller;
 
+import club.ragdollhouse.service.Testservice;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,9 @@ import java.util.List;
 
 @RestController
 public class TestController {
+
+    @Autowired
+    Testservice testservice;
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {
@@ -78,5 +83,12 @@ public class TestController {
 
         out.close();
 
+    }
+
+
+    @RequestMapping(value = "/testSelect",method = RequestMethod.GET)
+    public String testSelect(){
+
+        return testservice.Test().toString();
     }
 }
