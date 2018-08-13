@@ -24,8 +24,8 @@ public class ReptiliaHttp {
         try {
             url = new URL(address);
             conn = (HttpURLConnection) url.openConnection();
-            conn.setConnectTimeout(5000);
-            conn.setReadTimeout(5000);
+            conn.setConnectTimeout(10000);
+            conn.setReadTimeout(10000);
             conn.setDoInput(true);
             conn.connect();
             in = conn.getInputStream();
