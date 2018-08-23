@@ -4,8 +4,6 @@ package club.ragdollhouse.pojo;
  * 测试select语句的bean
  */
 public class Test {
-    private int id;
-    private String name ;
 
     public int getId() {
         return id;
@@ -55,6 +53,8 @@ public class Test {
         this.lover = lover;
     }
 
+    private int id;
+    private String name ;
     private String age;
     private String hobby;
     private String work;

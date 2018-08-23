@@ -1,7 +1,5 @@
 package club.ragdollhouse.config;
 
-import club.ragdollhouse.util.HttpClient;
-import club.ragdollhouse.util.InitMenu;
 import org.apache.log4j.Logger;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

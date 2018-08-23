@@ -53,16 +53,36 @@ public class ReptiliaCheck {
         this.url_addr = url_addr;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getNewsAbstract() {
+        return newsAbstract;
+    }
+
+    public void setNewsAbstract(String newsAbstract) {
+        this.newsAbstract = newsAbstract;
+    }
+
     //审核新闻id
     private int id;
     //审核新闻标题
     private String title;
     //审核状态
     private String check_statu;
-    //是否爬取
+    //是否推送
     private String push_flag;
     //爬虫时间
     private String rep_time;
     //文章地址
     private String url_addr;
+    //文章内容
+    private String content;
+    //文章摘要
+    private String newsAbstract;
 }
