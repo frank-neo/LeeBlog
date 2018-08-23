@@ -25,15 +25,15 @@ public class Reptlilia implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
         //等待别的业务都启动之后启动爬虫
-        Thread.sleep(10000L);
+        Thread.sleep(5000L);
         //定时器
         Timer timer = new Timer();
         //设置时间
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 18); // 控制时
+        calendar.set(Calendar.HOUR_OF_DAY, 23); // 控制时
         calendar.set(Calendar.MINUTE, 30);    // 控制分
         calendar.set(Calendar.SECOND, 0);    // 控制秒
-        Date time = calendar.getTime();     // 得出执行任务的时间,此处为今天的 18：30：00
+        Date time = calendar.getTime();     // 得出执行任务的时间,此处为今天的 8：30：00
 
         timer.schedule(new TimerTask() {
             @Override

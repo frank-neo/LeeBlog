@@ -15,9 +15,8 @@ public class Testservice {
     @Resource
     TestDao testDao;
 
-    public String Test(){
-        Test test = testDao.getAll().get(0);//结果198
-        return test.getAge();
+    public List<Test> Test(){
+        return testDao.getAll();
     }
 
 

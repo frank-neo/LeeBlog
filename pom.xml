@@ -92,7 +92,17 @@
             <version>5.0.3</version>
             <scope>compile</scope>
         </dependency>
-
+        <!--thymeleaf模板依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!--关闭thymeleaf标签不完整报错-->
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <version>1.9.21</version>
+        </dependency>
 
     </dependencies>
 
