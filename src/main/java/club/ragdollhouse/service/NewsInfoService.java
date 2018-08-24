@@ -2,9 +2,7 @@ package club.ragdollhouse.service;
 
 import club.ragdollhouse.Mapper.NewsInfoDao;
 import club.ragdollhouse.pojo.ReptiliaCheck;
-import club.ragdollhouse.util.DateUtil;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -14,10 +12,13 @@ public class NewsInfoService {
     @Resource
     NewsInfoDao newsInfoDao;
 
-    public List<ReptiliaCheck> newsInfo(){
+    public List<ReptiliaCheck> newsInfo(String date,int pageNo,int pageSize){
 
-        String date = DateUtil.timeStamp2Date(DateUtil.timeStamp(), "yyyy-MM-dd");
+        return newsInfoDao.newsInfo(date,pageNo,pageSize);
+    }
 
-        return newsInfoDao.newsInfo(date);
+    public int countNews(String date){
+
+        return newsInfoDao.countNews(date);
     }
 }

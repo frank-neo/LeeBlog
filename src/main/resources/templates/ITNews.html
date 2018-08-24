@@ -124,33 +124,23 @@
 
                     <ul th:each="news : ${newsList}">
                     <div class="blog-post layout-2">
-                        <div class="media-holder">
-                            <div class="item-wrapp">
-                                <div class="blog-item small">
-                                </div>
-                            </div>
-                        </div>
                         <div class="permalink">
-                            <h4><a th:each="entry  : ${news}" th:text="${entry .title}" href="blog-post.html">show error </a></h4>
+                            <h4><a th:each="entry : ${news}" th:text="${entry.title}" href="blog-post.html">show error </a></h4>
                         </div>
                         <ul class="post-meta">
-                            <li ><i class="icon-time"></i> 2 July, 2013 </li>
+                            <li><i class="icon-time"></i><li th:each="entry : ${news}" th:text="${entry.rep_time}">show error </li></li>
                             <!-- Date -->
-                            <li ><i class="icon-user"></i><a href="#">Admin</a></li>
-                            <!-- Author -->
-                            <li ><i class="icon-tags"></i><a href="#">Web Development</a></li>
+                            <li><i class="icon-tags"></i><a href="#"></a><li th:each="entry : ${news}" th:text="${entry.tag}">show error </li></li>
                             <!-- Category -->
-                            <li ><i class="icon-comments"></i><a href="#">32 Comments</a></li>
-                            <!-- Comments -->
+                            <li><i class="icon-comments"></i><a href="#"></a><li th:each="entry : ${news}" th:text="${entry.tag}">show error </li></li>
+                            <!-- Category -->
                         </ul>
                         <!-- End post-meta -->
                         <div class="post-intro">
+                            <p th:each="entry : ${news}" th:text="${entry.newsAbstract}"></p>
+                            <br>
                             <p>
-                                Morbi placerat bibendum eget dolor pellentesque sed consectetur pulvinar pellentesque bibendum. Vestibulum varius hendrerit turpis quiseam cursus. Donec bibendum vestibulum gravida.
-                            </p>
-                            <br/>
-                            <p>
-                                <a href="blog-post.html" class="button simple-grey small round">Read More</a>
+                                <a href="blog-post.html" class="button simple-grey small round">阅读更多</a>
                             </p>
                         </div>
                     </div>
@@ -159,14 +149,12 @@
 
                     <!-- Pagination -->
                     <nav class="pagination">
+                        <!--<li><a href="#">上一页</a></li>-->
+                        <!--<li><a href="#">下一页</a></li>-->
                         <ul>
-                            <li><a href="#">Previous</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#" class="current">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">Next</a></li>
+                            <li th:each="pages : ${pageList}">
+                                <a th:each="page : ${pages}" th:href="${page.href}" th:text="${page.page}" th:class="${page.classes}">1</a>
+                            </li>
                         </ul>
                         <div class="clearfix">
                         </div>

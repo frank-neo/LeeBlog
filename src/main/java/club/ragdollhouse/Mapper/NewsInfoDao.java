@@ -2,8 +2,8 @@ package club.ragdollhouse.Mapper;
 
 import club.ragdollhouse.pojo.ReptiliaCheck;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-
 import java.util.List;
 
 /**
@@ -12,6 +12,11 @@ import java.util.List;
 @Mapper
 public interface NewsInfoDao {
 
-    @Select("select title,rep_time,newsabstract from reptilia_check where rep_time = #{date}")
-    List<ReptiliaCheck> newsInfo(String date);
+    //当天新闻查询
+    @Select("select title,rep_time,newsabstract,tag from reptilia_check where rep_time = #{date}  limit #{pageNo},#{pageSize}")
+    List<ReptiliaCheck> newsInfo(@Param("date") String date,@Param("pageNo") int pageNo,@Param("pageSize") int pageSize);
+
+    //当天新闻总数查询
+    @Select("SELECT COUNT(1) FROM reptilia_check where rep_time = #{date}")
+    int countNews(@Param("date") String date);
 }

@@ -69,6 +69,14 @@ public class ReptiliaCheck {
         this.newsAbstract = newsAbstract;
     }
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
     //审核新闻id
     private int id;
     //审核新闻标题
@@ -85,4 +93,6 @@ public class ReptiliaCheck {
     private String content;
     //文章摘要
     private String newsAbstract;
+    //文章标签
+    private String tag;
 }
