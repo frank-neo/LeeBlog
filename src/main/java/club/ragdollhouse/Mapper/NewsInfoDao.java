@@ -1,6 +1,7 @@
 package club.ragdollhouse.Mapper;
 
 import club.ragdollhouse.pojo.ReptiliaCheck;
+import club.ragdollhouse.pojo.TagPojo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -19,4 +20,8 @@ public interface NewsInfoDao {
     //当天新闻总数查询
     @Select("SELECT COUNT(1) FROM reptilia_check where rep_time = #{date}")
     int countNews(@Param("date") String date);
+
+    //新闻tag列表
+    @Select("SELECT DISTINCT tag,\"icon-tag\" AS classes FROM reptilia_check")
+    List<TagPojo> tagList();
 }

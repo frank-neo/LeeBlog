@@ -9,6 +9,8 @@ server:
   tomcat:
     max-threads: 0
     uri-encoding: UTF-8
+    #解决异常报java.lang.IllegalArgumentException:
+  max-http-header-size: 10000000
 
 spring:
   datasource:

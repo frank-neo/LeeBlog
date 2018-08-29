@@ -34,7 +34,7 @@ public class Reptlilia implements ApplicationRunner {
         calendar.set(Calendar.MINUTE, 30);    // 控制分
         calendar.set(Calendar.SECOND, 0);    // 控制秒
         Date time = calendar.getTime();     // 得出执行任务的时间,此处为今天的 8：30：00
-
+        //一天爬一次
         timer.schedule(new TimerTask() {
             @Override
             public void run() {

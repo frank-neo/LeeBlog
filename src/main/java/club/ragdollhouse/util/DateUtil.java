@@ -2,7 +2,9 @@ package club.ragdollhouse.util;
 
 import org.junit.jupiter.api.Test;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -56,6 +58,17 @@ public class DateUtil {
         long time = System.currentTimeMillis();
         String t = String.valueOf(time / 1000);
         return t;
+    }
+
+    /**
+     * 返回日期第前天日期
+     */
+    public static String beforeDate(int day){
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.DATE,0-day);
+        Date d = c.getTime();
+        return DateFormat.getDateInstance(DateFormat.DEFAULT).format(d);
     }
 
     @Test
