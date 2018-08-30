@@ -18,7 +18,7 @@ import java.util.Random;
 public class DrawImage {
 
     private static final long serialVersionUID = 1L;
-    public static final int WIDTH = 120;
+    public static final int WIDTH = 300;
     public static final int HEIGHT = 45;
 
     //验证码图片地址
@@ -117,10 +117,10 @@ public class DrawImage {
         //String base = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         //字符位置
-        int x = 5;
+        int x = 100;
         int y = 30;
         // 控制字数
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             // 生成0-255的随机数
             int R = new Random().nextInt(256);
             int G = new Random().nextInt(256);

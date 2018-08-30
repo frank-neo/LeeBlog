@@ -4,9 +4,9 @@
 
 //点击换一张验证码
 $('.imgcode').hover(function () {
-    layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "点击更换(不区分大小写)" + "</span>", '.verify', {
+    layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "点击更换(不区分大小写)" + "</span>", '#imgObj', {
         time: 6000,
-        tips: [2, "#f7fafc"]
+        tips: [2, "#ffffff"]
     })
 }, function () {
     layer.closeAll('tips');
@@ -30,29 +30,49 @@ function chgUrl(url) {
     return url;
 }
 
+var isRun=true;
 // 验证码验证
 function isRightCode() {
-    var code = $("#verify").val();
-    //alert(code);
-    code = "c=" + code;
-    $.ajax({
-        type: "POST",
-        url: "ResultServlet",
-        data: code,
-        success: callback
-    });
+    //防止重复提交部分
+    if(isRun){
+        console.log('提交按钮被点击');
+        isRun=false;
+        //提交数据部分
+        var code = $("#verify").val();
+        var user = $("#inputEmail").val();
+        var psw = $("#inputPassword").val();
+        //alert(code);
+        code = "c=" + code+"&u="+user+"&p="+psw;
+        $.ajax({
+            type: "POST",
+            url: "../ResultServlet",
+            data: code,
+            success: callback
+        });
+    }
+    setTimeout(function(){
+        isRun=true;
+    },3500); //点击后相隔多长时间可执行
 }
 
 // 验证以后处理提交信息或错误信息
 function callback(data) {
-    if (data.toString() == 1) {
-        layer.tips("<span style='font-size:16px;height:30px;line-height:45px;'>" + "<img src='../css/assets/y_alt.png'>" + "</span>", '#verify', {
-            tips: [4, '#f7fafc']
+    var jsonReturn = JSON.parse(data);
+    alert(jsonReturn.code);
+    if (jsonReturn.code == 1) {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/y_alt.png' style='margin-top: 7px'>" + "</div>", '#verify', {
+            time: 6000,
+            tips: [4, '#ffffff']
         });
         return;
+    }else if (data.toString() == 0){
+        var imgSrc = $("#imgObj");
+        var src = imgSrc.attr("src");
+        imgSrc.attr("src", chgUrl(src));
     } else {
-        layer.tips("<div style='width:32px; height:32px;color:#f7fafc'>" + "<img src='../css/assets/x_alt.png'>" + "</div>", '#verify-div', {
-            tips: [4, '#f7fafc']
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#verify', {
+            time: 6000,
+            tips: [4, '#ffffff']
         });
         return;
     }
