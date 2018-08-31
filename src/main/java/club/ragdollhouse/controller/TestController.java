@@ -1,6 +1,7 @@
 package club.ragdollhouse.controller;
 
 import club.ragdollhouse.pojo.Test;
+import club.ragdollhouse.service.LoginService;
 import club.ragdollhouse.service.Testservice;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -25,6 +26,9 @@ public class TestController {
 
     @Autowired
     Testservice testservice;
+
+    @Autowired
+    LoginService loginService;
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {
@@ -98,6 +102,11 @@ public class TestController {
     @RequestMapping(value = "/testInsert",method = RequestMethod.GET)
     public int testInsert(){
         return testservice.insertTest();
+    }
+
+    @RequestMapping(value = "/UserEmailExists",method = RequestMethod.GET)
+    public String UserEmailExists(){
+        return loginService.UserEmailExists("839908968@qq.com");
     }
 
 }

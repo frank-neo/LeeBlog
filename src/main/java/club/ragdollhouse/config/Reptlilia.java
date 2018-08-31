@@ -44,6 +44,5 @@ public class Reptlilia implements ApplicationRunner {
                 logger.info("爬虫数据插入数据库：" + news_count + "条。");
             }
         }, time, 1000L * 60 * 60 * 24);
-
     }
 }
