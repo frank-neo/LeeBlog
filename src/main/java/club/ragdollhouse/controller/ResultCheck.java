@@ -16,7 +16,6 @@ import java.io.PrintWriter;
 @RestController
 public class ResultCheck {
 
-    static String SESSION_IN_TIME = "99";
     static String SESSION_OUT_TIME = "0";
     static String CODE_IS_NULL = "10";
     static String CODE_IS_WRONG = "11";
@@ -44,6 +43,7 @@ public class ResultCheck {
         PrintWriter out = response.getWriter();
         //第一步验证码要对
         if (validateC != null) {
+            String SESSION_IN_TIME = "99";
             loginCode.setSessionval(SESSION_IN_TIME);
             if (veryCode == null || "".equals(veryCode)) {
                 loginCode.setCode(CODE_IS_NULL);
@@ -83,8 +83,23 @@ public class ResultCheck {
 
         //是否记住账号密码
         if (remember_flag.equals("1")){
-            response.addCookie(UserCookie(userEmail));
-            response.addCookie(PassCookie(passWord));
+            if (loginCode.getUsername().equals(USEREMAIL_IS_RIGHT)){
+                response.addCookie(UserCookie(userEmail));
+            }
+            if (loginCode.getPassword().equals(PWD_IS_RIGHT)) {
+                response.addCookie(PassCookie(passWord));
+            }
+        }
+        //是否清除cookie
+        if(remember_flag.equals("2")){
+            Cookie delete1 = new Cookie("username",null);//假如要删除名称为username的Cookie
+            delete1.setMaxAge(0); //立即删除型
+            delete1.setPath("/"); //项目所有目录均有效，这句很关键，否则不敢保证删除
+            response.addCookie(delete1);
+            Cookie delete2= new Cookie("pswd",null);
+            delete2.setMaxAge(0);
+            delete2.setPath("/");
+            response.addCookie(delete2);
         }
 
         String l = JSON.toJSONString(loginCode);
@@ -106,7 +121,7 @@ public class ResultCheck {
 
     private Cookie PassCookie(String password){
         //创建cookie1，为其指定键名是userName，值是输入密码。
-        Cookie cookie2 = new Cookie("passwd",password);
+        Cookie cookie2 = new Cookie("pswd",password);
         //指定过期为7天。
         cookie2.setMaxAge(60*60*24*7);
         return cookie2;

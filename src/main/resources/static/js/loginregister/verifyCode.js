@@ -2,6 +2,33 @@
  * 验证code-js
  */
 
+var isRun = true;
+var remember_flag;//1是记住，2是不记住
+var user;
+var psw;
+
+$(function () {
+
+    var cookieString = document.cookie;
+    var arrycookie = cookieString.split(";");
+    for (var i = 0; i < arrycookie.length; i++) {
+        var arr = arrycookie[i].split("=");
+        if ($.trim(arr[0]) == "username") {
+            user = arr[1];
+            if ($("#inputEmail").val() == null || $("#inputEmail").val() == "") {
+                $("#inputEmail").attr("value", user);
+            }
+        }
+        if ($.trim(arr[0]) == "pswd") {
+            psw = arr[1];
+            if ($("#inputPassword").val() == null || $("#inputPassword").val() == "") {
+                $("#inputPassword").attr("value", psw);
+            }
+        }
+    }
+
+});
+
 //点击换一张验证码
 $('.imgcode').hover(function () {
     layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "点击更换(不区分大小写)" + "</span>", '#imgObj', {
@@ -30,21 +57,28 @@ function chgUrl(url) {
     return url;
 }
 
-var isRun = true;
-var remember_flag = 1;//1是记住，2是不记住
 // 验证码验证
 function isRightCode() {
     //防止重复提交部分
     if (isRun) {
         //console.log('提交按钮被点击');
         isRun = false;
+
+        if ($("#remember-me").is(':checked')) {
+            remember_flag = 1;
+        } else {
+            remember_flag = 2;
+        }
         //提交数据部分
-        var code = $("#verify").val();
-        var user = $("#inputEmail").val();
-        var psw = $("#inputPassword").val();
-        var psw_md5 = hex_md5(psw);
-        //alert(code);
-        code = "c=" + code + "&u=" + user + "&p=" + psw_md5 + "&r=" + remember_flag;
+        var psw_md5;
+        if ($("#inputPassword").val() == psw) {
+            psw_md5 = psw;
+        } else {
+            psw_md5 = hex_md5($("#inputPassword").val());
+        }
+        user = $("#inputEmail").val();
+        var vcode = $("#verify").val();
+        var code = "c=" + vcode + "&u=" + user + "&p=" + psw_md5 + "&r=" + remember_flag;
         $.ajax({
             type: "POST",
             url: "../ResultServlet",
