@@ -32,6 +32,7 @@ $(function () {
 //点击换一张验证码
 $('.imgcode').hover(function () {
     layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "点击更换(不区分大小写)" + "</span>", '#imgObj', {
+        tipsMore: true,
         time: 6000,
         tips: [2, "#ffffff"]
     })
