@@ -39,9 +39,7 @@ function logonStatu(code) {
 function callback(date) {
     if (date == 1) {
         jQuery("#loginlink").text("欢迎，" + nickname + "  [退出登录]");
-        //delCookie("buildtoken");
-        //delCookie("nickname");
-        jQuery("#loginlink").attr('href', "/");
+        jQuery("#loginlink").attr('href', "/outlogin");
         jQuery("#loginlink").attr('target', "_Self");
     } else {
         //console.log("登录失败。");
@@ -53,22 +51,3 @@ function Trim(str) {
     return str.replace(/(^\s*)|(\s*$)/g, "");
 }
 
-//删除cookie
-function delCookie(name) {
-    var exp = new Date();
-    exp.setTime(exp.getTime() - 1);
-    var cval = getCookie(name);
-    if (cval != null)
-        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
-}
-
-//获取cookie
-
-function getCookie(name)
-{
-    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-    if(arr=document.cookie.match(reg))
-        return unescape(arr[2]);
-    else
-        return null;
-}
