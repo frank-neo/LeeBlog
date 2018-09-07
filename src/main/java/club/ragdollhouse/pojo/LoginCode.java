@@ -1,5 +1,8 @@
 package club.ragdollhouse.pojo;
 
+/**
+ * 登录信息
+ */
 public class LoginCode {
 
     public String getCode() {

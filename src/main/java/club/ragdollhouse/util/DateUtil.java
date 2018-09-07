@@ -61,12 +61,23 @@ public class DateUtil {
     }
 
     /**
-     * 返回日期第前天日期
+     * 返回当前日期第前天日期
      */
     public static String beforeDate(int day){
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE,0-day);
+        Date d = c.getTime();
+        return DateFormat.getDateInstance(DateFormat.DEFAULT).format(d);
+    }
+
+    /**
+     * 返回当前日期第后天日期
+     */
+    public static String afterDate(int day){
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.DATE,0+day);
         Date d = c.getTime();
         return DateFormat.getDateInstance(DateFormat.DEFAULT).format(d);
     }
@@ -83,5 +94,8 @@ public class DateUtil {
 
         String timeStamp2 = date2TimeStamp(date, "yyyy-MM-dd HH:mm:ss");
         System.out.println(timeStamp2);  //运行输出:1470278082
+
+
+        System.out.println(afterDate(7));
     }
 }

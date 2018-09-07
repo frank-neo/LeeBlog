@@ -20,12 +20,12 @@ public class ReptiliaHttp {
         URL url;
         InputStream in = null;
         BufferedReader reader = null;
-        StringBuffer stringBuffer = null;
+        StringBuffer stringBuffer;
         try {
             url = new URL(address);
             conn = (HttpURLConnection) url.openConnection();
-            conn.setConnectTimeout(10000);
-            conn.setReadTimeout(10000);
+            conn.setConnectTimeout(50000);
+            conn.setReadTimeout(50000);
             conn.setDoInput(true);
             conn.connect();
             in = conn.getInputStream();
@@ -37,6 +37,7 @@ public class ReptiliaHttp {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            return "爬虫失败";
         } finally{
             if (conn != null) {
                 conn.disconnect();

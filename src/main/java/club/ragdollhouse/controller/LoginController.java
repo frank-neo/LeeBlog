@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * 登录注册控制器
+ * 登录注册页面跳转控制器
  */
 @Controller
 public class LoginController {

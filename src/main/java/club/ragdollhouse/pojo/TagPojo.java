@@ -1,5 +1,9 @@
 package club.ragdollhouse.pojo;
 
+/**
+ * 新闻tag标签
+ */
+
 public class TagPojo {
 
     public String getClasses() {

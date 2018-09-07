@@ -162,6 +162,12 @@ function callback(data) {
         }
 
     }
+
+    //全部正确后重定向到首页
+    if (jsonReturn.code == 12 && jsonReturn.password == 32 && jsonReturn.username == 22){
+        //$(location).attr('href','http://ragdollhouse.club');
+        window.location.replace("http://10.14.6.85/")
+    }
 }
 
 //记住登录名和密码

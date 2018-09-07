@@ -1,7 +1,7 @@
 package club.ragdollhouse.pojo;
 
 /**
- * 菜单对象的pojo类（{}）
+ * 微信公众号菜单对象的pojo类（{}）
  */
 public class Menu {
 

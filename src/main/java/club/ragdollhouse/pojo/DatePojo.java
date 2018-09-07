@@ -1,5 +1,8 @@
 package club.ragdollhouse.pojo;
 
+/**
+ * 日期对象
+ */
 public class DatePojo {
 
     public String getDate() {
