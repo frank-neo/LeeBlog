@@ -51,9 +51,6 @@ public class DrawImage {
     }
 
 
-
-
-
     /**
      * 设置背景色
      *

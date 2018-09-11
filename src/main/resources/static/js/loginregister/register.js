@@ -1,41 +1,22 @@
 /**
- * 验证登录code-js
+ * 验证注册code-js
  */
 
 var isRun = true;
 var remember_flag;//1是记住，2是不记住
 var user;
 var psw;
-
-$(function () {
-
-    var cookieString = document.cookie;
-    var arrycookie = cookieString.split(";");
-    for (var i = 0; i < arrycookie.length; i++) {
-        var arr = arrycookie[i].split("=");
-        if ($.trim(arr[0]) == "username") {
-            user = arr[1];
-            if ($("#inputEmail").val() == null || $("#inputEmail").val() == "") {
-                $("#inputEmail").attr("value", user);
-            }
-        }
-        if ($.trim(arr[0]) == "pswd") {
-            psw = arr[1];
-            if ($("#inputPassword").val() == null || $("#inputPassword").val() == "") {
-                $("#inputPassword").attr("value", psw);
-            }
-        }
-    }
-
-});
-
+var pswcheck;
+var nickname;
+var sexflag;
+var vscode;
 //点击换一张验证码
 $('.imgcode').hover(function () {
     layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "点击更换(不区分大小写)" + "</span>", '#imgObj', {
         tipsMore: true,
         time: 6000,
         tips: [2, "#ffffff"]
-    })
+    });
 }, function () {
     layer.closeAll('tips');
 }).click(function () {
@@ -58,6 +39,7 @@ function chgUrl(url) {
     return url;
 }
 
+
 // 验证码验证
 function isRightCode() {
     //防止重复提交部分
@@ -70,23 +52,19 @@ function isRightCode() {
         } else {
             remember_flag = 2;
         }
-        //提交数据部分
-        var psw_md5;
-        if ($("#inputPassword").val() == psw) {
-            psw_md5 = psw;
-        } else {
-            psw_md5 = hex_md5($("#inputPassword").val());
+
+        if (frontCheck() == 1) {
+            var code = "c=" + vscode + "&u=" + user + "&p=" + psw + "&r=" + remember_flag + "&s=" + sexflag + "&n=" + nickname;
+            alert(code);
+            $.ajax({
+                type: "POST",
+                url: "../RegisterCheck",
+                data: code,
+                success: callback
+            });
         }
-        user = $("#inputEmail").val();
-        var vcode = $("#verify").val();
-        var code = "c=" + vcode + "&u=" + user + "&p=" + psw_md5 + "&r=" + remember_flag;
-        $.ajax({
-            type: "POST",
-            url: "../ResultServlet",
-            data: code,
-            success: callback
-        });
     }
+
     setTimeout(function () {
         isRun = true;
     }, 3500); //点击后相隔多长时间可执行
@@ -164,11 +142,12 @@ function callback(data) {
     }
 
     //全部正确后重定向到首页
-    if (jsonReturn.code == 12 && jsonReturn.password == 32 && jsonReturn.username == 22){
+    if (jsonReturn.code == 12 && jsonReturn.password == 32 && jsonReturn.username == 22) {
         //$(location).attr('href','http://ragdollhouse.club');
         window.location.replace("http://10.14.6.85/")
     }
 }
+
 
 //记住登录名和密码
 $("#remember-me").click(function () {
@@ -179,3 +158,92 @@ $("#remember-me").click(function () {
         remember_flag = 0;
     }
 });
+
+//前端验证
+function frontCheck() {
+    user = $("#inputEmail").val();
+    psw = $("#inputPassword").val();
+    pswcheck = $("#inputPasswordcheck").val();
+    nickname = $("#nickName").val();
+    sexflag = $("input[name='sex']:checked").val();
+    vscode = $("#verify").val();
+
+    if (user == "") {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputEmail', {
+            tipsMore: true,
+            time: 6000,
+            tips: [4, '#ffffff']
+        });
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "邮箱不能为空" + "</span>", '#inputEmail', {
+            tipsMore: true,
+            time: 6000,
+            tips: [2, "#ffffff"]
+        });
+    }
+    if (psw == "") {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPassword', {
+            tipsMore: true,
+            time: 6000,
+            tips: [4, '#ffffff']
+        });
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "密码不能为空" + "</span>", '#inputPassword', {
+            tipsMore: true,
+            time: 6000,
+            tips: [2, "#ffffff"]
+        });
+    }
+    if (pswcheck == "") {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPasswordcheck', {
+            tipsMore: true,
+            time: 6000,
+            tips: [4, '#ffffff']
+        });
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "密码不能为空" + "</span>", '#inputPasswordcheck', {
+            tipsMore: true,
+            time: 6000,
+            tips: [2, "#ffffff"]
+        });
+    }else{
+        if (pswcheck != psw){
+            layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPasswordcheck', {
+                tipsMore: true,
+                time: 6000,
+                tips: [4, '#ffffff']
+            });
+            layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "两次输入密码不一致！" + "</span>", '#inputPasswordcheck', {
+                tipsMore: true,
+                time: 6000,
+                tips: [2, "#ffffff"]
+            });
+        }
+    }
+    if (nickname == "") {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#nickName', {
+            tipsMore: true,
+            time: 6000,
+            tips: [4, '#ffffff']
+        });
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "昵称不能为空" + "</span>", '#nickName', {
+            tipsMore: true,
+            time: 6000,
+            tips: [2, "#ffffff"]
+        });
+    }
+    if (sexflag == "" || sexflag == undefined) {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 0px'>" + "</div>", '#sexbox', {
+            tipsMore: true,
+            time: 6000,
+            tips: [4, '#ffffff']
+        });
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "性别不能为空" + "</span>", '#sexbox', {
+            tipsMore: true,
+            time: 6000,
+            tips: [2, "#ffffff"]
+        });
+    }
+    //alert("邮箱：" + user + ";密码：" + psw + ";确认密码：" + pswcheck + ";昵称：" + nickname + "；性别：" + sexflag);
+    if (user != "" && psw != "" && pswcheck != "" && nickname != "" && (sexflag != "" || sexflag != undefined) && pswcheck == psw) {
+
+        return 1;
+    }
+}

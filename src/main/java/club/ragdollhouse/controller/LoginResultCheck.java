@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @RestController
-public class ResultCheck {
+public class LoginResultCheck {
 
     static String SESSION_OUT_TIME = "0";
     static String CODE_IS_NULL = "10";
@@ -85,7 +85,7 @@ public class ResultCheck {
             }
         }
 
-        //登录验证正确后，存储用户姓名，登录taken，失效时间到浏览器cookie中
+        //登录验证正确后，存储用户姓名，登录taken，失效时间到浏览器cookie中(记住登录状态)
         if (loginCode.getCode().equals(CODE_IS_RIGHT) && loginCode.getPassword().equals(PWD_IS_RIGHT)
                 && loginCode.getUsername().equals(USEREMAIL_IS_RIGHT)) {
 
@@ -97,7 +97,7 @@ public class ResultCheck {
             response.addCookie(UserPasCookie("buildtoken",token,3));
             //设置完之后数据入库
             loginAccessToken.setTaken(token);
-            //设置记住登录状态数据3天时效
+            //设置记住登录状态数据3天时效（数据库sql我减了一天也就是2天）
             loginAccessToken.setTaken_time(DateUtil.afterDate(3));
             loginService.loginAccessInsert(loginAccessToken);
         }

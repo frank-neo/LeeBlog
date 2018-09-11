@@ -21,7 +21,7 @@ public class LoginController {
 
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String register(){
-        return "register";
+        return "register2";
     }
 
 

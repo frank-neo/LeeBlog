@@ -2,6 +2,7 @@ package club.ragdollhouse.service;
 
 import club.ragdollhouse.Mapper.LoginDao;
 import club.ragdollhouse.pojo.LoginAccessToken;
+import club.ragdollhouse.pojo.RegisterCode;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,4 +32,14 @@ public class LoginService {
     public int loginAccessInsert(LoginAccessToken loginAccessToken){
         return loginDao.loginAccessInsert(loginAccessToken);
     }
+
+    //昵称重复校验
+    public String nickNameExists(String nickName){
+        return loginDao.nickNameExists(nickName);
+    }
+
+    //注册信息入库
+    public int RegisterInfInsert( RegisterCode registerCode){
+        return loginDao.RegisterInfInsert(registerCode);
+    };
 }

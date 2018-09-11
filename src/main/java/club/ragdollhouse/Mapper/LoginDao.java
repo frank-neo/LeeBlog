@@ -1,6 +1,7 @@
 package club.ragdollhouse.Mapper;
 
 import club.ragdollhouse.pojo.LoginAccessToken;
+import club.ragdollhouse.pojo.RegisterCode;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,5 +32,17 @@ public interface LoginDao {
             "#{loginAccessToken.taken}," +
             "#{loginAccessToken.taken_time})")
     int loginAccessInsert(@Param("loginAccessToken") LoginAccessToken loginAccessToken);
+
+    //昵称存在验证
+    @Select("SELECT 1 FROM USER_INF WHERE appname = #{nickName}")
+    String nickNameExists(@Param("nickName") String nickName);
+
+    //注册信息入库
+    @Insert("INSERT INTO USER_INF(email,appname,sex,password,md5pwd,taken_time) VALUES" +
+            "(#{loginAccessToken.email}," +
+            "#{loginAccessToken.appname}," +
+            "#{loginAccessToken.taken}," +
+            "#{loginAccessToken.taken_time})")
+    int RegisterInfInsert(@Param("registerCode") RegisterCode registerCode);
 
 }
