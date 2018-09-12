@@ -45,9 +45,37 @@ public class RegisterCode {
         this.password = password;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getMd5pwd() {
+        return md5pwd;
+    }
+
+    public void setMd5pwd(String md5pwd) {
+        this.md5pwd = md5pwd;
+    }
+
+
+    public String getCodeefftime() {
+        return codeefftime;
+    }
+
+    public void setCodeefftime(String codeefftime) {
+        this.codeefftime = codeefftime;
+    }
+
     private String username;
     private String code;
     private String sessionval;
     private String nickname;
     private String password;
+    private String sex;
+    private String md5pwd;
+    private String codeefftime;
 }

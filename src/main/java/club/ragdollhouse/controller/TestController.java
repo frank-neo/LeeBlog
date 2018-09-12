@@ -2,6 +2,7 @@ package club.ragdollhouse.controller;
 
 import club.ragdollhouse.pojo.Test;
 import club.ragdollhouse.service.LoginService;
+import club.ragdollhouse.service.MailSendService;
 import club.ragdollhouse.service.Testservice;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -29,6 +30,9 @@ public class TestController {
 
     @Autowired
     LoginService loginService;
+
+    @Autowired
+    MailSendService mailSendService;
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {
@@ -108,5 +112,12 @@ public class TestController {
     public String UserEmailExists(){
         return loginService.UserEmailExists("839908968@qq.com");
     }
+
+//    @RequestMapping(value = "/TestThreadPool",method = RequestMethod.GET)
+//    public void TestThreadPool(){
+//        for (int i = 0; i <20 ; i++) {
+//            mailSendService.testThreadPool();
+//        }
+//    }
 
 }

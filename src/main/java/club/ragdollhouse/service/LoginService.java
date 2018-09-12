@@ -4,7 +4,6 @@ import club.ragdollhouse.Mapper.LoginDao;
 import club.ragdollhouse.pojo.LoginAccessToken;
 import club.ragdollhouse.pojo.RegisterCode;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 
 @Service

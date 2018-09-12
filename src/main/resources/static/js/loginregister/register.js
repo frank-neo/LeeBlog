@@ -3,7 +3,6 @@
  */
 
 var isRun = true;
-var remember_flag;//1是记住，2是不记住
 var user;
 var psw;
 var pswcheck;
@@ -54,7 +53,7 @@ function isRightCode() {
         }
 
         if (frontCheck() == 1) {
-            var code = "c=" + vscode + "&u=" + user + "&p=" + psw + "&r=" + remember_flag + "&s=" + sexflag + "&n=" + nickname;
+            var code = "c=" + vscode + "&u=" + user + "&p=" + psw + "&s=" + sexflag + "&n=" + nickname;
             alert(code);
             $.ajax({
                 type: "POST",
@@ -149,15 +148,6 @@ function callback(data) {
 }
 
 
-//记住登录名和密码
-$("#remember-me").click(function () {
-    var n = document.getElementById("remember-me").checked;
-    if (n) {
-        remember_flag = 1;
-    } else {
-        remember_flag = 0;
-    }
-});
 
 //前端验证
 function frontCheck() {

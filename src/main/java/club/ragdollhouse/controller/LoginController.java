@@ -1,26 +1,34 @@
 package club.ragdollhouse.controller;
 
+import club.ragdollhouse.service.MailSendService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * 登录注册页面跳转控制器
+ * 邮箱链接注册跳转页面
  */
 @Controller
 public class LoginController {
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String login(){
+    @Autowired
+    MailSendService mailSendService;
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
         return "login2";
     }
 
-    @RequestMapping(value = "/register",method = RequestMethod.GET)
-    public String register(){
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register() {
         return "register2";
     }
 
@@ -39,6 +47,18 @@ public class LoginController {
         delete2.setPath("/");
         response.addCookie(delete2);
         return "login2";
+    }
+
+
+    @RequestMapping(value = "/activateRegister", method = RequestMethod.GET)
+    public String RegisterStatu(@RequestParam Map<String, Object> paramMap) {
+        String code = paramMap.get("code").toString();
+        int updatenum = mailSendService.activeRegisterStatu(code);
+        if (updatenum == 1) {
+            return "registerSuccess";
+        } else {
+            return "registerFailuer";
+        }
     }
 
 }
