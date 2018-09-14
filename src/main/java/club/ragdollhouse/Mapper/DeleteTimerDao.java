@@ -12,4 +12,8 @@ public interface DeleteTimerDao {
     //每天清清登录状态数据库
     @Delete("DELETE FROM login_taken WHERE taken_time <= CURDATE()")
     void DeleteLoginInf();
+
+    //每天清除失效注册信息
+    @Delete("DELETE FROM USER_INF WHERE statu = 'N' AND codeefftime <= CURDATE()")
+    void deleteUselessRegister();
 }

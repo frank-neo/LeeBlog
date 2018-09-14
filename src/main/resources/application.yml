@@ -9,10 +9,6 @@ server:
   tomcat:
     max-threads: 0
     uri-encoding: UTF-8
-    #解决异常报java.lang.IllegalArgumentException:
-  #max-http-header-size: 10000000
-  #解决java.io.IOException: 您的主机中的软件中止了一个已建立的连接。
-  #connection-timeout: 20000
 
 spring:
   datasource:

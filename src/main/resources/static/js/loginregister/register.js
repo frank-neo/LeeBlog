@@ -54,7 +54,7 @@ function isRightCode() {
 
         if (frontCheck() == 1) {
             var code = "c=" + vscode + "&u=" + user + "&p=" + psw + "&s=" + sexflag + "&n=" + nickname;
-            alert(code);
+            //alert(code);
             $.ajax({
                 type: "POST",
                 url: "../RegisterCheck",
@@ -71,22 +71,23 @@ function isRightCode() {
 
 // 验证以后处理提交信息或错误信息
 function callback(data) {
+    var callbackflag = true;
     var jsonReturn = JSON.parse(data);
     //alert(jsonReturn.username + ";" + jsonReturn.password + ";" + jsonReturn.code + ";" + jsonReturn.sessionval);
 
     //用户名
-    if (jsonReturn.username == 20) {
+    if (jsonReturn.username == 21) {
         layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputEmail', {
             tipsMore: true,
             time: 6000,
             tips: [4, '#ffffff']
         });
-    } else if (jsonReturn.username == 21) {
-        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputEmail', {
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "邮箱已被注册过！" + "</span>", '#inputEmail', {
             tipsMore: true,
             time: 6000,
-            tips: [4, '#ffffff']
+            tips: [2, "#ffffff"]
         });
+        callbackflag = false;
     } else {
         layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/y_alt.png' style='margin-top: 7px'>" + "</div>", '#inputEmail', {
             tipsMore: true,
@@ -95,27 +96,26 @@ function callback(data) {
         });
     }
 
-    //密码
-    if (jsonReturn.password == 30) {
-        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPassword', {
-            tipsMore: true,
-            time: 6000,
-            tips: [4, '#ffffff']
-        });
-    } else if (jsonReturn.password == 31) {
-        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPassword', {
+    //昵称
+    if (jsonReturn.nickname == 32) {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/y_alt.png' style='margin-top: 7px'>" + "</div>", '#nickName', {
             tipsMore: true,
             time: 6000,
             tips: [4, '#ffffff']
         });
     } else {
-        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/y_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPassword', {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#nickName', {
             tipsMore: true,
             time: 6000,
             tips: [4, '#ffffff']
         });
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "昵称已经有人使用！" + "</span>", '#nickName', {
+            tipsMore: true,
+            time: 6000,
+            tips: [2, "#ffffff"]
+        });
+        callbackflag = false;
     }
-
 
     //验证码
     if (jsonReturn.sessionval == 0) {
@@ -136,21 +136,22 @@ function callback(data) {
                 time: 6000,
                 tips: [4, '#ffffff']
             });
+            callbackflag = false;
         }
 
     }
 
-    //全部正确后重定向到首页
-    if (jsonReturn.code == 12 && jsonReturn.password == 32 && jsonReturn.username == 22) {
+    //全部正确后提示激活邮件已经发送，请前往激活
+    if (callbackflag == true) {
         //$(location).attr('href','http://ragdollhouse.club');
-        window.location.replace("http://10.14.6.85/")
+        window.location.replace("http://10.14.6.85/messgaeIssue");
     }
 }
 
 
-
 //前端验证
 function frontCheck() {
+    var frontCheckFlag = true;
     user = $("#inputEmail").val();
     psw = $("#inputPassword").val();
     pswcheck = $("#inputPasswordcheck").val();
@@ -158,7 +159,8 @@ function frontCheck() {
     sexflag = $("input[name='sex']:checked").val();
     vscode = $("#verify").val();
 
-    if (user == "") {
+    //邮箱
+    if (user == "" || user.length == 0) {
         layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputEmail', {
             tipsMore: true,
             time: 6000,
@@ -169,8 +171,23 @@ function frontCheck() {
             time: 6000,
             tips: [2, "#ffffff"]
         });
+        frontCheckFlag = false;
+    } else if ((!/^\w+@\w+(\.\w+)+$/.test(user)) || user.length > 100) {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputEmail', {
+            tipsMore: true,
+            time: 6000,
+            tips: [4, '#ffffff']
+        });
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "邮箱格式不正确" + "</span>", '#inputEmail', {
+            tipsMore: true,
+            time: 6000,
+            tips: [2, "#ffffff"]
+        });
+        frontCheckFlag = false;
     }
-    if (psw == "") {
+
+    //密码
+    if (psw == "" || psw.length == 0) {
         layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPassword', {
             tipsMore: true,
             time: 6000,
@@ -181,8 +198,35 @@ function frontCheck() {
             time: 6000,
             tips: [2, "#ffffff"]
         });
+        frontCheckFlag = false;
+    } else if (psw.length > 100) {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPassword', {
+            tipsMore: true,
+            time: 6000,
+            tips: [4, '#ffffff']
+        });
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "密码过长" + "</span>", '#inputPassword', {
+            tipsMore: true,
+            time: 6000,
+            tips: [2, "#ffffff"]
+        });
+        frontCheckFlag = false;
+    }else if (psw.length < 6){
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPassword', {
+            tipsMore: true,
+            time: 6000,
+            tips: [4, '#ffffff']
+        });
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "密码太短，安全系数过低。" + "</span>", '#inputPassword', {
+            tipsMore: true,
+            time: 6000,
+            tips: [2, "#ffffff"]
+        });
+        frontCheckFlag = false;
     }
-    if (pswcheck == "") {
+    
+    //重复密码
+    if (pswcheck == "" || pswcheck.length == 0) {
         layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPasswordcheck', {
             tipsMore: true,
             time: 6000,
@@ -193,21 +237,25 @@ function frontCheck() {
             time: 6000,
             tips: [2, "#ffffff"]
         });
-    }else{
-        if (pswcheck != psw){
+        frontCheckFlag = false;
+    } else {
+        if (pswcheck != psw) {
             layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#inputPasswordcheck', {
                 tipsMore: true,
                 time: 6000,
                 tips: [4, '#ffffff']
             });
+            frontCheckFlag = false;
             layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "两次输入密码不一致！" + "</span>", '#inputPasswordcheck', {
                 tipsMore: true,
                 time: 6000,
                 tips: [2, "#ffffff"]
             });
+            frontCheckFlag = false;
         }
     }
-    if (nickname == "") {
+    //昵称
+    if (nickname == ""||nickname.length == 0) {
         layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#nickName', {
             tipsMore: true,
             time: 6000,
@@ -218,7 +266,22 @@ function frontCheck() {
             time: 6000,
             tips: [2, "#ffffff"]
         });
+        frontCheckFlag = false;
+    }else if (nickname.length >10) {
+        layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 7px'>" + "</div>", '#nickName', {
+            tipsMore: true,
+            time: 6000,
+            tips: [4, '#ffffff']
+        });
+        layer.tips("<span style='font-size:14px;height:30px;line-height:45px;'>" + "昵称过长！" + "</span>", '#nickName', {
+            tipsMore: true,
+            time: 6000,
+            tips: [2, "#ffffff"]
+        });
+        frontCheckFlag = false;
     }
+
+    //性别
     if (sexflag == "" || sexflag == undefined) {
         layer.tips("<div style='width:32px; height:32px;color:#ffffff'>" + "<img src='../css/assets/x_alt.png' style='margin-top: 0px'>" + "</div>", '#sexbox', {
             tipsMore: true,
@@ -230,10 +293,10 @@ function frontCheck() {
             time: 6000,
             tips: [2, "#ffffff"]
         });
+        frontCheckFlag = false;
     }
     //alert("邮箱：" + user + ";密码：" + psw + ";确认密码：" + pswcheck + ";昵称：" + nickname + "；性别：" + sexflag);
-    if (user != "" && psw != "" && pswcheck != "" && nickname != "" && (sexflag != "" || sexflag != undefined) && pswcheck == psw) {
-
+    if (frontCheckFlag == true) {
         return 1;
     }
 }

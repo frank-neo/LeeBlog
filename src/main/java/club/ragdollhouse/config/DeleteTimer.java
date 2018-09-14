@@ -41,6 +41,8 @@ public class DeleteTimer implements ApplicationRunner {
             public void run() {
                 deleteTimerService.deleteLoginInf();
                 logger.info("昨日登录失效数据清除以完成。");
+                deleteTimerService.deleteUselessRegister();
+                logger.info("昨日注册失效数据已经删除。");
             }
         },time,1000L * 60 * 60 * 24);
 

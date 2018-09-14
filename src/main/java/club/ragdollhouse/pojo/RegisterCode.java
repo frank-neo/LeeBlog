@@ -70,12 +70,12 @@ public class RegisterCode {
         this.codeefftime = codeefftime;
     }
 
-    private String username;
-    private String code;
-    private String sessionval;
-    private String nickname;
-    private String password;
-    private String sex;
-    private String md5pwd;
-    private String codeefftime;
+    private String username;//用户邮箱
+    private String code;//激活码
+    private String sessionval;//
+    private String nickname;//昵称
+    private String password;//密码
+    private String sex;//性别
+    private String md5pwd;//md5加密密码
+    private String codeefftime;//注册码生效时间
 }

@@ -2,10 +2,7 @@ package club.ragdollhouse.Mapper;
 
 import club.ragdollhouse.pojo.LoginAccessToken;
 import club.ragdollhouse.pojo.RegisterCode;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 /**
  * 登录校验查询
@@ -38,13 +35,18 @@ public interface LoginDao {
     String nickNameExists(@Param("nickName") String nickName);
 
     //注册信息入库
-    @Insert("INSERT INTO USER_INF(email,appname,sex,password,md5pwd,codeefftime) VALUES" +
+    @Insert("INSERT INTO USER_INF(email,appname,sex,password,md5pwd,code,codeefftime) VALUES" +
             "(#{registerCode.username}," +
             "#{registerCode.nickname}," +
             "#{registerCode.sex}," +
             "#{registerCode.password}," +
             "#{registerCode.md5pwd}," +
+            "#{registerCode.code}," +
             "#{registerCode.codeefftime})")
     int RegisterInfInsert(@Param("registerCode") RegisterCode registerCode);
+
+    //登出系统，删除登录token
+    @Delete("DELETE FROM login_taken WHERE appname = #{appname} AND taken = #{taken}")
+    void outOfLogin(@Param("appname") String appname,@Param("taken") String taken);
 
 }

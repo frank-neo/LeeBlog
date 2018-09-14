@@ -21,21 +21,21 @@ public class IndexPageController {
     @Autowired
     IndexPageService indexPageService;
 
-    //监测记住登录的查询接口
-    @RequestMapping(value = "/logonStatu", method = RequestMethod.POST)
-    public void logonStatu(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String username = request.getParameter("username");
-        String buildtoken = request.getParameter("buildtoken");
-        response.setContentType("text/html;charset=utf-8");
-        PrintWriter out = response.getWriter();
-        if (indexPageService.loginStatu(username, buildtoken) != null
-                && indexPageService.loginStatu(username, buildtoken).equals("1")) {
-
-            out.println(1);
-        } else {
-            out.print(0);
-        }
-        out.flush();
-        out.close();
-    }
+//    //监测记住登录的查询接口【作废】
+//    @RequestMapping(value = "/logonStatu", method = RequestMethod.POST)
+//    public void logonStatu(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        String username = request.getParameter("username");
+//        String buildtoken = request.getParameter("buildtoken");
+//        response.setContentType("text/html;charset=utf-8");
+//        PrintWriter out = response.getWriter();
+//        if (indexPageService.loginStatu(username, buildtoken) != null
+//                && indexPageService.loginStatu(username, buildtoken).equals("1")) {
+//
+//            out.println(1);
+//        } else {
+//            out.print(0);
+//        }
+//        out.flush();
+//        out.close();
+//    }
 }

@@ -19,4 +19,9 @@ public class DeleteTimerService {
         deleteTimerDao.DeleteLoginInf();
     }
 
+    //注册失效数据清除
+    public void deleteUselessRegister(){
+        deleteTimerDao.deleteUselessRegister();
+    }
+
 }

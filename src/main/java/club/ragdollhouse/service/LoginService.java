@@ -41,4 +41,8 @@ public class LoginService {
     public int RegisterInfInsert( RegisterCode registerCode){
         return loginDao.RegisterInfInsert(registerCode);
     };
+
+    //退出登录删除数据token
+    public void outOfLogin(String appname,String taken){ loginDao.outOfLogin(appname,taken);}
+
 }
