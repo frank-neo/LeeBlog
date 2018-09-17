@@ -1,7 +1,6 @@
 package club.ragdollhouse.controller;
 
 import club.ragdollhouse.pojo.LoginAccessToken;
-import club.ragdollhouse.pojo.RegisterCode;
 import club.ragdollhouse.pojo.UserInf;
 import club.ragdollhouse.service.LoginService;
 import club.ragdollhouse.service.MailSendService;

@@ -14,7 +14,7 @@ import java.util.List;
 public interface NewsInfoDao {
 
     //当天新闻查询
-    @Select("select title,rep_time,newsabstract,tag from reptilia_check where rep_time = #{date}  limit #{pageNo},#{pageSize}")
+    @Select("select id,title,rep_time,newsabstract,tag from reptilia_check where rep_time = #{date}  limit #{pageNo},#{pageSize}")
     List<ReptiliaCheck> newsInfo(@Param("date") String date,@Param("pageNo") int pageNo,@Param("pageSize") int pageSize);
 
     //当天新闻总数查询
@@ -24,4 +24,7 @@ public interface NewsInfoDao {
     //新闻tag列表
     @Select("SELECT DISTINCT tag,\"icon-tag\" AS classes FROM reptilia_check")
     List<TagPojo> tagList();
+
+    @Select("")
+    ReptiliaCheck newsDetail(Integer id);
 }

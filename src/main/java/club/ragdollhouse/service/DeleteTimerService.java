@@ -24,4 +24,9 @@ public class DeleteTimerService {
         deleteTimerDao.deleteUselessRegister();
     }
 
+    //清除过期新闻数据
+    public void deleteUselessInfNews(){
+        deleteTimerDao.deleteUselessInfNews();
+    }
+
 }

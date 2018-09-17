@@ -39,10 +39,16 @@ public class DeleteTimer implements ApplicationRunner {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                //清除登录
                 deleteTimerService.deleteLoginInf();
                 logger.info("昨日登录失效数据清除以完成。");
+                //清除注册
                 deleteTimerService.deleteUselessRegister();
                 logger.info("昨日注册失效数据已经删除。");
+                //清除过期新闻
+                deleteTimerService.deleteUselessInfNews();
+                logger.info("过期新闻数据已经删除。");
+
             }
         },time,1000L * 60 * 60 * 24);
 

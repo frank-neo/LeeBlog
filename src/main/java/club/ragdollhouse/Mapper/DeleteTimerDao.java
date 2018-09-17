@@ -16,4 +16,8 @@ public interface DeleteTimerDao {
     //每天清除失效注册信息
     @Delete("DELETE FROM USER_INF WHERE statu = 'N' AND codeefftime <= CURDATE()")
     void deleteUselessRegister();
+
+    //每天清除无效的新闻数据
+    @Delete("DELETE FROM reptilia_check WHERE rep_time < DATE_SUB(NOW() ,INTERVAL 10 DAY)")
+    void deleteUselessInfNews();
 }

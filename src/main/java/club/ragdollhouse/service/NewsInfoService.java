@@ -32,10 +32,12 @@ public class NewsInfoService {
     public List<DatePojo> beforeDateList(){
 
         List<DatePojo> dateList = new ArrayList<>();
-        for (int i = 1; i <10 ; i++) {
+        for (int i = 0; i <10 ; i++) {
             DatePojo datePojo = new DatePojo();
-            datePojo.setDate(DateUtil.beforeDate(i));
+            String date = DateUtil.beforeDate(i);
+            datePojo.setDate(date);
             datePojo.setClasses("icon-angle-right");
+            datePojo.setHref("../newsInfo?date="+date);
             dateList.add(datePojo);
         }
         return dateList;
@@ -45,5 +47,10 @@ public class NewsInfoService {
     public List<TagPojo> tagList(){
 
         return newsInfoDao.tagList();
+    }
+
+    //新闻明细
+    public ReptiliaCheck newsDetail(String id){
+        return newsInfoDao.newsDetail(new Integer(id));
     }
 }

@@ -83,7 +83,7 @@
                         </li>
                         <li><a href="#">博客</a>
                         </li>
-                        <li><a href="#" id="current">新资讯</a>
+                        <li><a href="/newsInfo" id="current">新资讯</a>
                         </li>
                         <li><a href="#">留言板</a>
 
@@ -131,7 +131,7 @@
                     <ul th:each="news : ${newsList}">
                     <div class="blog-post layout-2">
                         <div class="permalink">
-                            <h4><a th:each="entry : ${news}" th:text="${entry.title}" href="blog-post.html">show error </a></h4>
+                            <h4><a th:each="entry : ${news}" th:text="${entry.title}" th:href="newDetail?newsid=+${entry.id}">show error </a></h4>
                         </div>
                         <ul class="post-meta">
                             <li><i class="icon-time"></i><li th:each="entry : ${news}" th:text="${entry.rep_time}">show error </li></li>
@@ -155,8 +155,6 @@
 
                     <!-- Pagination -->
                     <nav class="pagination">
-                        <!--<li><a href="#">上一页</a></li>-->
-                        <!--<li><a href="#">下一页</a></li>-->
                         <ul>
                             <li th:each="pages : ${pageList}">
                                 <a th:each="page : ${pages}" th:href="${page.href}" th:text="${page.page}" th:class="${page.classes}">1</a>
@@ -187,7 +185,7 @@
                         <h4 class="widget-title">往期回顾</h4>
                         <ul class="sidebar-nav">
                             <li th:each="dates : ${dateList}">
-                                <a th:each="datepojo : ${dates}" th:text="${datepojo.date}" th:class="${datepojo.classes}"></a>
+                                <a th:each="datepojo : ${dates}" th:text="${datepojo.date}" th:class="${datepojo.classes}" th:href="${datepojo.href}"></a>
                             </li>
                         </ul>
                     </div>

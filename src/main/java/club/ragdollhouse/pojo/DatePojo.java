@@ -21,6 +21,15 @@ public class DatePojo {
         this.classes = classes;
     }
 
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
+    }
+
     private String classes;
     private String date;
+    private String href;
 }

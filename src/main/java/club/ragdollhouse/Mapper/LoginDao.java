@@ -46,7 +46,7 @@ public interface LoginDao {
     int RegisterInfInsert(@Param("registerCode") RegisterCode registerCode);
 
     //登出系统，删除登录token
-    @Delete("DELETE FROM login_taken WHERE appname = #{appname} AND taken = #{taken}")
+    @Delete("DELETE FROM login_taken WHERE appname = #{appname}")
     void outOfLogin(@Param("appname") String appname,@Param("taken") String taken);
 
 }

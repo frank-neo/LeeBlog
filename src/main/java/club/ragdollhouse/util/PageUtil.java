@@ -20,7 +20,7 @@ public class PageUtil {
         //翻页起始位置
         int pageNo;
 
-        if (mapParam.size() == 0) {
+        if (mapParam.size() == 0 || mapParam.get("pageNo") == null) {
             pageNo = 0;
         } else {
             pageNo = (Integer.parseInt(mapParam.get("pageNo")) - 1) * 4;
@@ -34,7 +34,7 @@ public class PageUtil {
         //翻页页数
         int pageSize;
 
-        if (mapParam.size() == 0) {
+        if (mapParam.size() == 0 || mapParam.get("pageNo") == null) {
             pageSize = 4;
         } else {
             pageSize = 4;
@@ -48,14 +48,15 @@ public class PageUtil {
     public static List<PageHelp> frontPageList(Map<String, String> mapParam, int countNews) {
 
         List<PageHelp> list = new ArrayList<>();
-        if (mapParam.size() == 0) {
+        String date = mapParam.get("date");
+        if (mapParam.size() == 0||mapParam.get("pageNo") == null) {
 
             int i_fm = 4;
             int i_mode = countNews / i_fm + 1;
             for (int i = 1; i <= i_mode; i++) {
                 PageHelp pageHelp = new PageHelp();
                 pageHelp.setPage(i + "");
-                pageHelp.setHref("/newsInfo?pageNo=" + i + "&pageSize=" + 4);
+                pageHelp.setHref("/newsInfo?pageNo=" + i + "&pageSize=" + 4 + "&date=" + date);
                 if (i == 1) {
                     pageHelp.setClasses("current");
                 } else {
@@ -66,11 +67,11 @@ public class PageUtil {
             PageHelp pageHelp1 = new PageHelp();
             pageHelp1.setPage("上一页");
             pageHelp1.setClasses("");
-            pageHelp1.setHref("/newsInfo?pageNo=" + 1 + "&pageSize=" + 4);
+            pageHelp1.setHref("/newsInfo?pageNo=" + 1 + "&pageSize=" + 4 + "&date=" + date);
             list.add(0, pageHelp1);
             PageHelp pageHelp2 = new PageHelp();
             pageHelp2.setPage("下一页");
-            pageHelp2.setHref("/newsInfo?pageNo=" + 2 + "&pageSize=" + 4);
+            pageHelp2.setHref("/newsInfo?pageNo=" + 2 + "&pageSize=" + 4 + "&date=" + date);
             pageHelp2.setClasses("");
             list.add(pageHelp2);
 
@@ -82,7 +83,7 @@ public class PageUtil {
             for (int i = 1; i <= i_mode; i++) {
                 PageHelp pageHelp = new PageHelp();
                 pageHelp.setPage(i + "");
-                pageHelp.setHref("/newsInfo?pageNo=" + i + "&pageSize=" + 4);
+                pageHelp.setHref("/newsInfo?pageNo=" + i + "&pageSize=" + 4 + "&date=" + date);
                 if (i == now_page) {
                     pageHelp.setClasses("current");
                 } else {
@@ -94,29 +95,29 @@ public class PageUtil {
                 PageHelp pageHelp1 = new PageHelp();
                 pageHelp1.setPage("上一页");
                 pageHelp1.setClasses("");
-                pageHelp1.setHref("/newsInfo?pageNo=" + 1 + "&pageSize=" + 4);
+                pageHelp1.setHref("/newsInfo?pageNo=" + 1 + "&pageSize=" + 4 + "&date=" + date);
                 list.add(0, pageHelp1);
                 PageHelp pageHelp2 = new PageHelp();
                 pageHelp2.setPage("下一页");
-                pageHelp2.setHref("/newsInfo?pageNo=" + 2 + "&pageSize=" + 4);
+                pageHelp2.setHref("/newsInfo?pageNo=" + 2 + "&pageSize=" + 4 + "&date=" + date);
                 pageHelp2.setClasses("");
                 list.add(pageHelp2);
             } else {
                 PageHelp pageHelp1 = new PageHelp();
                 pageHelp1.setPage("上一页");
                 pageHelp1.setClasses("");
-                pageHelp1.setHref("/newsInfo?pageNo=" + (now_page - 1) + "&pageSize=" + 4);
+                pageHelp1.setHref("/newsInfo?pageNo=" + (now_page - 1) + "&pageSize=" + 4 + "&date=" + date);
                 list.add(0, pageHelp1);
-                if(now_page == i_mode){
+                if (now_page == i_mode) {
                     PageHelp pageHelp2 = new PageHelp();
                     pageHelp2.setPage("下一页");
-                    pageHelp2.setHref("/newsInfo?pageNo=" + i_mode + "&pageSize=" + 4);
+                    pageHelp2.setHref("/newsInfo?pageNo=" + i_mode + "&pageSize=" + 4 + "&date=" + date);
                     pageHelp2.setClasses("");
                     list.add(pageHelp2);
-                }else {
+                } else {
                     PageHelp pageHelp2 = new PageHelp();
                     pageHelp2.setPage("下一页");
-                    pageHelp2.setHref("/newsInfo?pageNo=" + (now_page + 1) + "&pageSize=" + 4);
+                    pageHelp2.setHref("/newsInfo?pageNo=" + (now_page + 1) + "&pageSize=" + 4 + "&date=" + date);
                     pageHelp2.setClasses("");
                     list.add(pageHelp2);
                 }
