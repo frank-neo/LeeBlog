@@ -85,7 +85,7 @@
                         </li>
                         <li><a href="/newsInfo" id="current">新资讯</a>
                         </li>
-                        <li><a href="#">留言板</a>
+                        <li><a href="#">社区</a>
 
                         <li><a href="#">商务合作</a>
                         </li>
@@ -131,7 +131,7 @@
                     <ul th:each="news : ${newsList}">
                     <div class="blog-post layout-2">
                         <div class="permalink">
-                            <h4><a th:each="entry : ${news}" th:text="${entry.title}" th:href="newDetail?newsid=+${entry.id}">show error </a></h4>
+                            <h4><a th:each="entry : ${news}" th:text="${entry.title}" th:href="'newDetail?newsid='+${entry.id}">show error </a></h4>
                         </div>
                         <ul class="post-meta">
                             <li><i class="icon-time"></i><li th:each="entry : ${news}" th:text="${entry.rep_time}">show error </li></li>
@@ -146,7 +146,7 @@
                             <p th:each="entry : ${news}" th:text="${entry.newsAbstract}"></p>
                             <br>
                             <p>
-                                <a href="blog-post.html" class="button simple-grey small round">阅读更多</a>
+                                <a th:each="entry : ${news}" th:href="'newDetail?newsid='+${entry.id}" th:class="'button simple-grey small round'">阅读更多</a>
                             </p>
                         </div>
                     </div>

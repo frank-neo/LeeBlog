@@ -53,8 +53,8 @@ public class MailUtill {
             // 2.3设置邮件主题
             message.setSubject("账号激活");
             // 2.4设置邮件内容
-            String content = "<html><head></head><body><h1>欢迎加入ragdollhouse.club,这是一封激活邮件,激活请点击以下链接(此链接仅限当天有效)</h1><h3><a href='http://10.14.6.85/RegisterDemo/ActiveServlet?code="
-                    + code + "'>http://10.14.6.85/activateRegister?code=" + code
+            String content = "<html><head></head><body><h1>欢迎加入ragdollhouse.club,这是一封激活邮件,激活请点击以下链接(此链接仅限当天有效)</h1><h3><a href='http://ragdollhouse.club/RegisterDemo/ActiveServlet?code="
+                    + code + "'>http://ragdollhouse.club/activateRegister?code=" + code
                     + "</href></h3></body></html>";
             message.setContent(content, "text/html;charset=UTF-8");
             // 3.发送邮件

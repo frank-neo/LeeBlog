@@ -54,7 +54,6 @@ function isRightCode() {
 
         if (frontCheck() == 1) {
             var code = "c=" + vscode + "&u=" + user + "&p=" + psw + "&s=" + sexflag + "&n=" + nickname;
-            //alert(code);
             $.ajax({
                 type: "POST",
                 url: "../RegisterCheck",
@@ -73,7 +72,6 @@ function isRightCode() {
 function callback(data) {
     var callbackflag = true;
     var jsonReturn = JSON.parse(data);
-    //alert(jsonReturn.username + ";" + jsonReturn.password + ";" + jsonReturn.code + ";" + jsonReturn.sessionval);
 
     //用户名
     if (jsonReturn.username == 21) {
@@ -143,8 +141,7 @@ function callback(data) {
 
     //全部正确后提示激活邮件已经发送，请前往激活
     if (callbackflag == true) {
-        //$(location).attr('href','http://ragdollhouse.club');
-        window.location.replace("http://10.14.6.85/messgaeIssue");
+        window.location.replace("http://ragdollhouse.club/messgaeIssue");
     }
 }
 
@@ -295,7 +292,6 @@ function frontCheck() {
         });
         frontCheckFlag = false;
     }
-    //alert("邮箱：" + user + ";密码：" + psw + ";确认密码：" + pswcheck + ";昵称：" + nickname + "；性别：" + sexflag);
     if (frontCheckFlag == true) {
         return 1;
     }

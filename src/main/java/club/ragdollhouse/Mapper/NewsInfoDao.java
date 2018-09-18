@@ -5,6 +5,8 @@ import club.ragdollhouse.pojo.TagPojo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.List;
 
 /**
@@ -25,6 +27,6 @@ public interface NewsInfoDao {
     @Select("SELECT DISTINCT tag,\"icon-tag\" AS classes FROM reptilia_check")
     List<TagPojo> tagList();
 
-    @Select("")
-    ReptiliaCheck newsDetail(Integer id);
+    @Select("SELECT title,url_addr,content FROM reptilia_check WHERE id = #{id}")
+    ReptiliaCheck newsDetail(@RequestParam("id") Integer id);
 }

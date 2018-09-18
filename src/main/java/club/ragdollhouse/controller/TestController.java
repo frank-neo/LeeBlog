@@ -4,6 +4,7 @@ import club.ragdollhouse.pojo.Test;
 import club.ragdollhouse.service.LoginService;
 import club.ragdollhouse.service.MailSendService;
 import club.ragdollhouse.service.Testservice;
+import club.ragdollhouse.util.DateUtil;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -119,5 +120,11 @@ public class TestController {
 //            mailSendService.testThreadPool();
 //        }
 //    }
+
+
+    @RequestMapping(value = "/testriqi",method = RequestMethod.GET)
+    public String testriqi(){
+        return DateUtil.beforeDate(1);
+    }
 
 }

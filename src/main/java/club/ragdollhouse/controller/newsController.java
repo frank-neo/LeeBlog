@@ -45,6 +45,6 @@ public class newsController {
     public String newDetail(@RequestParam Map<String, String> mapParm,Model model) {
         String newsid = mapParm.get("newsid");
         model.addAttribute("newsdetail",newsInfoService.newsDetail(newsid));
-        return "newDetail";
+        return "newsDetail";
     }
 }

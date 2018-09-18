@@ -68,7 +68,9 @@ public class DateUtil {
         c.setTime(new Date());
         c.add(Calendar.DATE,0-day);
         Date d = c.getTime();
-        return DateFormat.getDateInstance(DateFormat.DEFAULT).format(d);
+        //这个api在windows和linux环境下返回的日期格式不同：window是：2018-9-17；linux是：Sep 17, 2018
+        //return DateFormat.getDateInstance(DateFormat.DEFAULT).format(d);
+        return new SimpleDateFormat("yyyy-MM-dd").format(d);
     }
 
     /**
@@ -79,7 +81,9 @@ public class DateUtil {
         c.setTime(new Date());
         c.add(Calendar.DATE,0+day);
         Date d = c.getTime();
-        return DateFormat.getDateInstance(DateFormat.DEFAULT).format(d);
+        //这个api在windows和linux环境下返回的日期格式不同：window是：2018-9-17；linux是：Sep 17, 2018
+        //return DateFormat.getDateInstance(DateFormat.DEFAULT).format(d);
+        return new SimpleDateFormat("yyyy-MM-dd").format(d);
     }
 
     @Test
