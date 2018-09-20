@@ -127,4 +127,9 @@ public class TestController {
         return DateUtil.beforeDate(1);
     }
 
+    //测试session
+    @RequestMapping(value = "/testSession",method = RequestMethod.GET)
+    public String testSession(HttpServletRequest request,HttpServletResponse response){
+        return request.getSession().getId();
+    }
 }

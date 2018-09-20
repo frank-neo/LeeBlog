@@ -4,8 +4,6 @@ server:
   #ip,域名都设置在address
   #address: 172.16.0.10
   address: 10.14.6.85
-  session:
-    timeout: 30
   tomcat:
     max-threads: 0
     uri-encoding: UTF-8
