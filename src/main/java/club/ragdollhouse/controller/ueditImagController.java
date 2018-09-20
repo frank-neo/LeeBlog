@@ -1,5 +1,6 @@
 package club.ragdollhouse.controller;
 
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,8 +42,14 @@ public class ueditImagController {
             if (!dest.getParentFile().exists()) { //判断文件父目录是否存在
                 dest.getParentFile().mkdir();
             }
+            String  pathcopy = "E:/testUeditorFile/222";
+            File copyfile = new File(pathcopy +"/"+nowName);
+            if (!copyfile.getParentFile().exists()) { //判断文件父目录是否存在
+                dest.getParentFile().mkdir();
+            }
             try {
                 upfile.transferTo(dest); //保存文件
+                FileCopyUtils.copy(dest,copyfile);
                 //是否上传成功
                 map.put("state", "SUCCESS");
                 //现在文件名称
