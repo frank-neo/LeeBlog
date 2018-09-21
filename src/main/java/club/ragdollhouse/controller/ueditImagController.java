@@ -32,24 +32,25 @@ public class ueditImagController {
                 return map;
             }
             String fileName = upfile.getOriginalFilename();
-            int size = (int) upfile.getSize();
 
             //上传位置路径
-            String path = "E:/testUeditorFile/111";
+            String path = "/usr/staticfile/file/editorimg";
             //为了避免重复简单处理
             String nowName = new Date().getTime() + "_" + fileName;
             File dest = new File(path + "/" + nowName);
             if (!dest.getParentFile().exists()) { //判断文件父目录是否存在
                 dest.getParentFile().mkdir();
             }
-            String  pathcopy = "E:/testUeditorFile/222";
-            File copyfile = new File(pathcopy +"/"+nowName);
-            if (!copyfile.getParentFile().exists()) { //判断文件父目录是否存在
-                dest.getParentFile().mkdir();
-            }
+//            //复制文件
+//            String  pathcopy = "E:/testUeditorFile/222";
+//            File copyfile = new File(pathcopy +"/"+nowName);
+//            if (!copyfile.getParentFile().exists()) { //判断文件父目录是否存在
+//                copyfile.getParentFile().mkdir();
+//            }
             try {
                 upfile.transferTo(dest); //保存文件
-                FileCopyUtils.copy(dest,copyfile);
+//                //复制文件
+//                FileCopyUtils.copy(dest,copyfile);
                 //是否上传成功
                 map.put("state", "SUCCESS");
                 //现在文件名称
@@ -59,7 +60,7 @@ public class ueditImagController {
                 //文件类型 .+后缀名
                 map.put("type", fileName.substring(upfile.getOriginalFilename().lastIndexOf(".")));
                 //文件路径
-                map.put("url", path + "/" + nowName);
+                map.put("url", "http://ragdollhouse.club:8099/file/editorimg/"+ nowName);
                 //文件大小（字节数）
                 map.put("size", upfile.getSize() + "");
                 return map;
