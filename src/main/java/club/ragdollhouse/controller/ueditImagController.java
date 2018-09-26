@@ -13,11 +13,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 图片上传接口
- */
 @RestController
 public class ueditImagController {
+
+    /**
+     * 图片上传接口
+     */
     //这里upfile是config.json中图片提交的表单名称
     @RequestMapping(value = "/UedtorConfig", method = RequestMethod.POST)
     public Map<String, String> screenshot(@RequestParam Map<String, String> mapParam, MultipartFile upfile) {
