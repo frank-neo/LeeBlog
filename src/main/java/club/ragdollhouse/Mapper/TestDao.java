@@ -31,4 +31,12 @@ public interface TestDao {
             "</script>")
     int insertTest(@Param("list") List<Test> list);
 
+
+    //测试事务第一步插入
+    @Insert("INSERT INTO test(NAME,age,hobby,WORK,lover) VALUES('qwe','66666666','lol','ppp','asd');")
+    int testTransacionPart1();
+    //测试事务第二步插入【报错sql】
+    @Insert("INSERT INTO test_transacion(testname,age) VALUES('test1111',(SELECT age FROM test WHERE NAME = 'qwe'));")
+    int testTransacionPart2();
+
 }

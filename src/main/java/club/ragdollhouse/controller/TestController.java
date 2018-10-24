@@ -132,4 +132,10 @@ public class TestController {
     public String testSession(HttpServletRequest request,HttpServletResponse response){
         return request.getSession().getId();
     }
+
+    //测试事务接口
+    @RequestMapping(value = "/testtransacion",method = RequestMethod.GET)
+    public String testTransacion(){
+        return testservice.testTransacion();
+    }
 }
