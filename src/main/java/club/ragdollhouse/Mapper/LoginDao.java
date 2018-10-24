@@ -49,4 +49,8 @@ public interface LoginDao {
     @Delete("DELETE FROM login_taken WHERE appname = #{appname}")
     void outOfLogin(@Param("appname") String appname,@Param("taken") String taken);
 
+    //校验用户登录状态
+    @Select("SELECT 1 FROM login_taken WHERE appname = #{appname} AND  taken = #{taken}")
+    String loginStatu(@Param("appname") String appname,@Param("taken") String taken);
+
 }

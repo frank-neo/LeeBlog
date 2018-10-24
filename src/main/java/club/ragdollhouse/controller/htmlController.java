@@ -23,5 +23,10 @@ public class htmlController {
         return "blog";
     }
 
+    //无权访问页面
+    @RequestMapping(value = "/nopermission",method = RequestMethod.GET)
+    public String nopermission(){
+        return "nopermission";
+    }
 
 }

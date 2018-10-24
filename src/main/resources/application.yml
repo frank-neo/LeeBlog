@@ -3,7 +3,7 @@ server:
   port: 80
   #ip,域名都设置在address
   #address: 172.16.0.10
-  address: 10.14.6.85
+  address: 10.14.6.246
   tomcat:
     max-threads: 0
     uri-encoding: UTF-8
