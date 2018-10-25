@@ -48,9 +48,7 @@ public class EditBlogCheck {
             String checkdata = permissionsCheckService.editblogcheck(nickname);
             out.println("{\"checkdata\": \"" + checkdata + "\"}");
         }
-
         out.flush();
         out.close();
-
     }
 }

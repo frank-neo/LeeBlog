@@ -2,6 +2,8 @@ package club.ragdollhouse.service;
 
 import club.ragdollhouse.Mapper.DeleteTimerDao;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.Resource;
 
 /**
@@ -20,7 +22,9 @@ public class DeleteTimerService {
     }
 
     //注册失效数据清除
+    @Transactional
     public void deleteUselessRegister(){
+        deleteTimerDao.deleteUselessRegisterRole();
         deleteTimerDao.deleteUselessRegister();
     }
 

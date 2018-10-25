@@ -14,6 +14,8 @@ public interface DeleteTimerDao {
     void DeleteLoginInf();
 
     //每天清除失效注册信息
+    @Delete("DELETE FROM role_user WHERE user_id IN (SELECT id FROM USER_INF WHERE statu = 'N' AND codeefftime <= CURDATE())")
+    void deleteUselessRegisterRole();
     @Delete("DELETE FROM USER_INF WHERE statu = 'N' AND codeefftime <= CURDATE()")
     void deleteUselessRegister();
 

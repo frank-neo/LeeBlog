@@ -44,6 +44,8 @@ public interface LoginDao {
             "#{registerCode.code}," +
             "#{registerCode.codeefftime})")
     int RegisterInfInsert(@Param("registerCode") RegisterCode registerCode);
+    @Insert("INSERT INTO role_user(role_id,user_id) VALUES(2,(SELECT id FROM USER_INF WHERE email=#{userEmail}))")
+    int RegisterRoleInser(@Param("userEmail") String userEmail);
 
     //登出系统，删除登录token
     @Delete("DELETE FROM login_taken WHERE appname = #{appname}")

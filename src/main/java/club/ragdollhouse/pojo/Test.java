@@ -1,5 +1,7 @@
 package club.ragdollhouse.pojo;
 
+import club.ragdollhouse.util.MailUtill;
+
 /**
  * 测试select语句的bean
  */
@@ -59,4 +61,5 @@ public class Test {
     private String hobby;
     private String work;
     private String lover;
+
 }

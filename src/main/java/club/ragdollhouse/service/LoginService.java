@@ -4,6 +4,8 @@ import club.ragdollhouse.Mapper.LoginDao;
 import club.ragdollhouse.pojo.LoginAccessToken;
 import club.ragdollhouse.pojo.RegisterCode;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.Resource;
 
 @Service
@@ -38,8 +40,9 @@ public class LoginService {
     }
 
     //注册信息入库
+    @Transactional
     public int RegisterInfInsert( RegisterCode registerCode){
-        return loginDao.RegisterInfInsert(registerCode);
+        return loginDao.RegisterInfInsert(registerCode) + loginDao.RegisterRoleInser(registerCode.getUsername());
     };
 
     //退出登录删除数据token
