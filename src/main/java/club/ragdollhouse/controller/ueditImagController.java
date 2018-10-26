@@ -1,5 +1,6 @@
 package club.ragdollhouse.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,10 +16,18 @@ import java.util.Map;
 
 @RestController
 public class ueditImagController {
-
     /**
      * 图片上传接口
      */
+
+    //上传位置路径
+    @Value("${ueditor.path}")
+    String path;
+
+    //编辑图片预览地址
+    @Value("${ueditor.viewurl}")
+    String viewurl;
+
     //这里upfile是config.json中图片提交的表单名称
     @RequestMapping(value = "/UedtorConfig", method = RequestMethod.POST)
     public Map<String, String> screenshot(@RequestParam Map<String, String> mapParam, MultipartFile upfile) {
@@ -34,8 +43,6 @@ public class ueditImagController {
             }
             String fileName = upfile.getOriginalFilename();
 
-            //上传位置路径
-            String path = "/usr/staticfile/file/editorimg";
             //为了避免重复简单处理
             String nowName = new Date().getTime() + "_" + fileName;
             File dest = new File(path + "/" + nowName);
@@ -61,17 +68,15 @@ public class ueditImagController {
                 //文件类型 .+后缀名
                 map.put("type", fileName.substring(upfile.getOriginalFilename().lastIndexOf(".")));
                 //文件路径
-                map.put("url", "http://ragdollhouse.club:8099/file/editorimg/"+ nowName);
+                map.put("url", viewurl + nowName);
                 //文件大小（字节数）
                 map.put("size", upfile.getSize() + "");
                 return map;
             } catch (IllegalStateException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 map.put("state", "FAILURE");
                 return map;
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 map.put("state", "FAILURE");
                 return map;

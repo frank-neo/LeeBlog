@@ -6,6 +6,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * 微信公众号菜单类
+ */
 @Order(2)
 @Component
 public class MenuInit implements ApplicationRunner {
