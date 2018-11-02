@@ -29,4 +29,9 @@ public class TestThemeleaf {
         model.addAttribute("testlist",list);
         return "ITNews";
     }
+
+    @RequestMapping(value = "/testIpInfo",method = RequestMethod.GET)
+    public String testIpInfo(){
+        return "testIpInfo";
+    }
 }

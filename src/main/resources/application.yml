@@ -46,7 +46,7 @@ logging:
 
 #ueditor参数配置
 ueditor:
-  #图片保存路径
+  #图片编辑暂存路径
   path: C:/ueditor_img/testuedit_image
   #path: /usr/staticfile/file/editorimg
   #编辑图片预览地址

@@ -51,8 +51,7 @@ public class PageUtil {
         String date = mapParam.get("date");
         if (mapParam.size() == 0||mapParam.get("pageNo") == null) {
 
-            int i_fm = 4;
-            int i_mode = countNews / i_fm + 1;
+            int i_mode = countNews / 4 + 1;
             for (int i = 1; i <= i_mode; i++) {
                 PageHelp pageHelp = new PageHelp();
                 pageHelp.setPage(i + "");

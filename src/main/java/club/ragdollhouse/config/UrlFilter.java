@@ -45,13 +45,15 @@ public class UrlFilter implements Filter {
             // 获取cookie信息
             Cookie[] cookies = request.getCookies();
 
-            for (int i = 0; i < cookies.length; i++) {
+            if (cookies != null) {
+                for (int i = 0; i < cookies.length; i++) {
 
-                if (cookies[i].getName().equals("nickname")) {
-                    nickname = cookies[i].getValue();
-                }
-                if (cookies[i].getName().equals("buildtoken")) {
-                    buildtoken = cookies[i].getValue();
+                    if (cookies[i].getName().equals("nickname")) {
+                        nickname = cookies[i].getValue();
+                    }
+                    if (cookies[i].getName().equals("buildtoken")) {
+                        buildtoken = cookies[i].getValue();
+                    }
                 }
             }
 
@@ -64,11 +66,12 @@ public class UrlFilter implements Filter {
                     logger.info("过滤器恶意访问重定向");
                 } else {
                     if (!permissionsCheckService.editblogcheck(nickname).equals("SYS_ADMIN")) {
-                        response.sendRedirect(request.getContextPath()+"/nopermission");
+                        response.sendRedirect(request.getContextPath() + "/nopermission");
                     }
                 }
             }
         }
+
         //别的url全部放行
         filterChain.doFilter(servletRequest, servletResponse);
     }

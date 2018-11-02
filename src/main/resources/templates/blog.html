@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>博客</title>
@@ -85,8 +86,6 @@
                         </li>
                         <li><a href="/newsInfo">新资讯</a>
                         </li>
-                        <li><a href="#">社区</a>
-
                         <li><a href="#">商务合作</a>
                         </li>
                         <li><a href="#">站内数据分析</a>
@@ -122,13 +121,15 @@
                 </div>
             </div>
             <div class="container">
-                <div class="three-fourth">
+                <div class="three-fourth" th:each="">
+                    <div class="permalink"><a href="/"><h4>测试测试测试测sadkj ahksj</h4></a></div>
                     <p>
-                        <span class="dropcap gray">B</span>roin id condimentum sem. Morbi vitae dui in magna vestibulum suscipit vitae vel nunc. Integer ut risus nulla. malesuada tortor, nec scelerisque lorem mattis lore Aliquam at erat in purus aliquet mollis. Sed at odio ut arcu fringilla dictum eu eu nisl. Donec rutrum erat non arcu gravida porttitor. Nunc magna nisi.Aliquam at erat in purus aliquet mollis. Fusce elementum velit vel dolor iaculis egestas. Maecenas ut nulla quis eros scelerisque posuere velatas. Fusce elementum velit vel dolor iaculis egestas nullam vitae neque luctus. Omassa risus eget arcu. Sed ac porta felis. Vivamus dignissim varius augue ut tempor. Proin urna diam ras venenatis, eros id congue pellent esque, risus leo. Proin urna diam ras venenatis, eros id congue pellent esque, risus leo.Donec quam felis, ultricies nec, pellentesque pretium quis, sem. Nulla consequat massa quis enim. Donec pe justo fringilla vel, aliquet nec vulputate eget, arcu enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felisa penelore mollis pretium.
+                       arcu gravida porttitor. Nunc magna nisi.Aliquam at erat in purus aliquet mollis. Fusce elementum velit vel dolor iaculis egestas. Maecenas ut nulla quis eros scelerisque posuere velatas. Fusce elementum velit vel dolor iaculis egestas nullam vitae neque luctus. Omassa risus eget arcu. Sed ac porta felis. Vivamus dignissim varius augue ut tempor. Proin urna diam ras venenatis, eros id congue pellent esque, risus leo. Proin urna diam ras venenatis, eros id congue pellent esque, risus leo.Donec quam felis, ultricies nec, pellentesque pretium quis, sem. Nulla consequat massa quis enim. Donec pe justo fringilla vel, aliquet nec vulputate eget, arcu enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felisa penelore mollis pretium.
                     </p>
-                    <div class="horizontal-line">
+                    <div class="blog-post layout-2">
                     </div>
                 </div>
+
                 <div class="one-fourth sidebar right">
                     <div class="widget">
                         <h4 class="widget-title">博客分类</h4>

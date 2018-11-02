@@ -17,12 +17,6 @@ public class htmlController {
         return "blogEditPage";
     }
 
-    //博客列表页面
-    @RequestMapping(value = "/blog", method = RequestMethod.GET)
-    public String blog() {
-        return "blog";
-    }
-
     //无权访问页面
     @RequestMapping(value = "/nopermission",method = RequestMethod.GET)
     public String nopermission(){
