@@ -36,6 +36,13 @@
     <script type="text/javascript" src="../js/custom.js"></script>
     <script type="text/javascript" src="../js/blogjs/editcheck.js"></script>
 </head>
+<style>
+    p{
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+    }
+</style>
 <body>
 <div id="container">
     <!-- main container starts-->
@@ -121,30 +128,105 @@
                 </div>
             </div>
             <div class="container">
-                <div class="three-fourth" th:each="">
-                    <div class="permalink"><a href="/"><h4>测试测试测试测sadkj ahksj</h4></a></div>
-                    <p>
-                       arcu gravida porttitor. Nunc magna nisi.Aliquam at erat in purus aliquet mollis. Fusce elementum velit vel dolor iaculis egestas. Maecenas ut nulla quis eros scelerisque posuere velatas. Fusce elementum velit vel dolor iaculis egestas nullam vitae neque luctus. Omassa risus eget arcu. Sed ac porta felis. Vivamus dignissim varius augue ut tempor. Proin urna diam ras venenatis, eros id congue pellent esque, risus leo. Proin urna diam ras venenatis, eros id congue pellent esque, risus leo.Donec quam felis, ultricies nec, pellentesque pretium quis, sem. Nulla consequat massa quis enim. Donec pe justo fringilla vel, aliquet nec vulputate eget, arcu enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felisa penelore mollis pretium.
-                    </p>
-                    <div class="blog-post layout-2">
-                    </div>
+                <div class="three-fourth">
+                    <ul th:each="lists:${bloglist}">
+                        <div th:class="permalink">
+                            <a href="/">
+                                <h4><span th:each="list:${lists}" th:text="${list.getTitle()}"></span>
+                                </h4>
+                            </a>
+                        </div>
+                            <p th:each="list:${lists}" th:utext="${list.getSamary()}">
+                            </p>
+                        <span>文章分类 ： </span> <a th:each="list:${lists}" th:href="'/blog?type='+${list.getType()}" th:text="'['+${list.getType()}+']'"></a>
+                        <div class="blog-post layout-2">
+                        </div>
+                    </ul>
+                    <!-- Pagination分页 -->
+                    <nav class="pagination">
+                        <ul>
+                            <li th:each="pages : ${pageList}">
+                                <a th:each="page : ${pages}" th:href="${page.href}" th:text="${page.page}" th:class="${page.classes}">1</a>
+                            </li>
+                        </ul>
+                        <div class="clearfix">
+                        </div>
+                    </nav>
+                    <!-- End pagination -->
                 </div>
 
                 <div class="one-fourth sidebar right">
                     <div class="widget">
                         <h4 class="widget-title">博客分类</h4>
                         <ul class="sidebar-nav">
-                            <li><a href="#">1111</a></li>
-                            <li><a href="#">1111</a></li>
-                            <li><a href="#">1111</a></li>
-                            <li><a href="#">1111</a></li>
+                            <li th:each="lists_type,iterStat:${list_type}">
+                                <a th:href="'/blog?type='+${lists_type.getType()}" th:text="${lists_type.getType()}"></a>
+                            </li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+    <section class="footer-call-to-action"><!-- footer call to action starts -->
+        <section class="container">
+            <div class="three-fourth">
+                <h4>如果你对本网站感到兴趣，不妨联系我。</h4>
+            </div>
+            <div class="one-fourth">
+                <a href="#" class="button grey huge round">联系方式</a>
+            </div>
+        </section>
+    </section><!-- footer call to action ends -->
+    <footer id="footer"><!--footer starts -->
+        <section class="container">
+            <section class="one-third">
+                <h4>QQ交流群</h4>
+                <ul class="twitter-feeds">
+                    <!-- twitter widget starts-->
+                </ul>
+                <!-- twitter widget ends-->
+                <p>
+                    <a href="#">+ 858208157</a>
+                </p>
+            </section>
+            <section class="one-third">
+                <h4>网站声明</h4>
+                <ul>
+                    <!-- latest posts widget starts-->
+                    <li><a href="#">本网站暂时不接任何广告等商业业务</a></li>
+                    <li><a href="#">仅仅作为博主的经验分享</a></li>
+                    <li><a href="#">以及开发爱好者的聚集地</a></li>
+                    <li><a href="#">谢谢大家捧场</a></li>
+                </ul>
+                <!-- lastest posts widget ends-->
+            </section>
+            <section class="one-third">
+                <h4>还没想好</h4>
+                <div class="flickr-widget">
+                    <!-- flickr widget starts-->
+                </div>
+            </section>
+        </section>
+    </footer>
+    <section id="copyrights">
+        <section class="container">
+            <div class="one-half">
+                <p>
+                    Copyright &copy; 2014.Company name All rights reserved.More Templates <br>
+                    <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">本网站页面展示效果，来源于模板之家开源项目，感谢模板之家的支持</a>
+                </p>
+            </div>
+            <div class="one-half">
+                <ul class="copyright_links">
+                    <li><a href="/" title="Home">Home</a></li>
+                    <li><a href="#" title="About">About us</a></li>
+                    <li><a href="#" title="Blog">Blog</a></li>
+                    <li><a href="#" title="Contact">Contact</a></li>
+                </ul>
+            </div>
+        </section>
+    </section>
 </div>
 </body>
 </html>

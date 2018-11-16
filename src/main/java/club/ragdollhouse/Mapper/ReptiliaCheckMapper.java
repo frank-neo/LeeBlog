@@ -13,7 +13,7 @@ import java.util.List;
 public interface ReptiliaCheckMapper {
 
     /**
-     * 爬虫入库测试
+     * 爬虫入库
      */
     @Insert("<script>" +
             "insert into reptilia_check(title,rep_time,url_addr,content,newsabstract) VALUES " +
@@ -21,6 +21,6 @@ public interface ReptiliaCheckMapper {
             "(#{item.title},#{item.rep_time},#{item.url_addr},#{item.content},#{item.newsAbstract})" +
             "</foreach>" +
             "</script>")
-    public int insertReptiliaCheck(List<ReptiliaCheck> list);
+    int insertReptiliaCheck(List<ReptiliaCheck> list);
 
 }

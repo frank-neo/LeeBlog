@@ -32,12 +32,13 @@ spring:
     mode: LEGACYHTML5
 #日志设置
 logging:
-  # 日志文件,绝对路径或相对路径（可以设置文件名称）
+  #日志文件,绝对路径或相对路径（可以设置文件名称）
   file: /tmp/ragdollhouselog/log.log
   #file: D:/360Downloads/log.log
   level:
     club:
       ragdollhouse:
+        #数据库操作打印日志
         Mapper: debug
     org:
       springframework:

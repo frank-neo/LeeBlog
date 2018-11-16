@@ -13,7 +13,6 @@ public class BlogEditor {
     //摘要
     private String samary;
 
-
     public String getTitle() {
         return title;
     }

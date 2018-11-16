@@ -33,10 +33,9 @@ public class UeditorSubmitController {
         String getblogtype = req.getParameter("getblog_type");
         //博客文本主体。
         String blogcontent = req.getParameter("blogcontent");
-        System.out.println(title);
-        System.out.println(author);
-        System.out.println(getblogtype);
-        System.out.println(blogcontent);
+        //博客概要
+        String samary = blogcontent.substring(0,180);
+
         //开始正则替换图片路径暂时不做，因为只对我一个人开放编辑
         //审核逻辑也pass掉
         //那就直接入库吧
@@ -46,6 +45,7 @@ public class UeditorSubmitController {
         blogEditor.setType(getblogtype);
         blogEditor.setContent(blogcontent);
         blogEditor.setBlog_date(DateUtil.beforeDate(0));
+        blogEditor.setSamary(samary);
         int insert_count = ueditorService.blog_insert(blogEditor);
         Map<String,String> map = new HashMap<>();
         if (insert_count == 1){

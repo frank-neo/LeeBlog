@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 /**
  * 爬虫工具类【通过正则表达式来检索我们要的内容】
- *
+ * infq官网的修改，也就意味着这个爬虫工具类的下岗了。
  * @author Lee
  */
 public class ReptiliaUtil {
