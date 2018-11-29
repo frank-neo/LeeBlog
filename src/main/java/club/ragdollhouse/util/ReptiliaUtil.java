@@ -2,7 +2,6 @@ package club.ragdollhouse.util;
 
 import club.ragdollhouse.pojo.ReptiliaCheck;
 import org.apache.log4j.Logger;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +23,11 @@ public class ReptiliaUtil {
     public List<ReptiliaCheck> regexMain() {
         String url = "https://news.cnblogs.com/";
         String result = ReptiliaHttp.ReptiliaResult(url);
-        //return getNewsInfo(result);
-        return null;
+        return getNewsInfo(result);
     }
 
     //正则具体实现
-    public static void getNewsInfo(String result) {
+    private List<ReptiliaCheck> getNewsInfo(String result) {
 
         //焦点新闻爬虫内容
         String focus_news = null;
@@ -40,9 +38,18 @@ public class ReptiliaUtil {
         //声明并实例化string内容中符合模板的对象集
         Matcher matcher_ulist = pattern_ulist.matcher(result);
         //爬取内容结果集
-        //List<ReptiliaCheck> list_r = new ArrayList<ReptiliaCheck>();
+        List<ReptiliaCheck> list_r = new ArrayList<ReptiliaCheck>();
+        //储存爬虫内容的相关数据
+        List<String> news_Titles = new ArrayList<String>();//文章标题
+        List<String> abs_text = new ArrayList<String>();//文章摘要
+        List<String> news_url = new ArrayList<String>();//文章地址
+        List<String> news_body = new ArrayList<String>();//文章内容
+        List<String> news_dates = new ArrayList<String>();//文章日期
 
-        while (matcher_ulist.find()) {
+        //爬虫时间戳
+        String repTime = DateUtil.timeStamp2Date(DateUtil.timeStamp(), "yyyy-MM-dd HH:mm:ss");
+
+        if (matcher_ulist.find()) {
             focus_news = matcher_ulist.group(1);
             //logger.info("=========================正在爬取新闻内容==============================");
             System.out.println("=========================正在爬取新闻内容==============================");
@@ -58,13 +65,11 @@ public class ReptiliaUtil {
                     String newsTitle = focusNewsTitleMatcher.group(1);
                     if (newsTitle != null) {
                         String newsTitleSon = newsTitle.trim().substring(37);
-                        //logger.info("文章标题：" + newsTitle);
-                        System.out.println("文章标题：" + newsTitleSon);
-                        reptiliaCheck.setTitle(newsTitleSon);
+                        logger.info("文章标题：" + newsTitleSon);
+                        news_Titles.add(newsTitleSon);
                     }
-
-
                 }
+
                 //开始爬文章摘要
                 //Pattern newsabstract = Pattern.compile("class=\"topic_img\" alt=\"\"/></a>([\\s\\S]*)<div class=\"entry_footer\">");
                 Pattern newsabstract = Pattern.compile("class=\"topic_img\" alt=\"\"/></a>(.+?)<div class=\"entry_footer\">");
@@ -74,9 +79,8 @@ public class ReptiliaUtil {
                     if (nabstract != null) {
                         //去除首位空格
                         String tri_nabstract = nabstract.trim().replaceAll("</div>", "");
-                        //logger.info("文章摘要："+tri_nabstract);
-                        System.out.println("文章摘要：" + tri_nabstract);
-//                            reptiliaCheck.setNewsAbstract(tri_nabstract);
+                        logger.info("文章摘要：" + tri_nabstract);
+                        abs_text.add(tri_nabstract);
                     }
                 }
                 //开始爬文章地址
@@ -87,42 +91,40 @@ public class ReptiliaUtil {
                     String newsUrl = newsLinkMatcher.group(1).trim().substring(9);
                     if (newsUrl != null) {
                         String newsurl = "https://news.cnblogs.com" + newsUrl;
-                        //logger.info("文章地址：" + newsurl);
-                        System.out.println("文章地址：" + newsurl);
+                        logger.info("文章地址：" + newsurl);
+                        news_url.add(newsurl);
                         String newsthml = NewReptiliaUtil.getHtmlDemo(newsurl);
-                        //System.out.println(newsthml);
                         //开始爬文章正文
                         Pattern contentDiv = Pattern.compile("<div id=\"news_body\">([\\s\\S]*)<!--end: news_body -->");
                         if (newsthml != null) {
                             Matcher contentDivMather = contentDiv.matcher(newsthml);
                             if (contentDivMather.find()) {
-                                String newsContent = contentDivMather.group(1).replaceAll("</div>","");
+                                String newsContent = contentDivMather.group(1)
+                                        .replaceAll("</div>", "")
+                                        .replaceAll("src=\"","src=\"http:");
                                 if (newsContent != null) {
-                                    //logger.info("新闻文本内容：" + newsContent);
-                                    System.out.println("新闻文本内容：" + newsContent);
+                                    logger.info("新闻文本内容：" + newsContent);
+                                    news_body.add(newsContent);
+                                    news_dates.add(repTime);
+                                    logger.info("---------------->爬虫时间：" + repTime);
                                 }
                             }
                         }
-
-//                            String repTime = DateUtil.timeStamp2Date(DateUtil.timeStamp(), "yyyy-MM-dd HH:mm:ss");
-//                            reptiliaCheck.setRep_time(repTime);
-//                            //logger.info("---------------->时间：" + repTime);
-//                            System.out.println("---------------->时间：" + repTime);
-
                     }
+                }
+                //循环封装list_r
+                int newssizes = news_Titles.size();
+                for (int i = 0; i < newssizes; i++) {
+                    ReptiliaCheck rc = new ReptiliaCheck();
+                    rc.setTitle(news_Titles.get(i));
+                    rc.setNewsAbstract(abs_text.get(i));
+                    rc.setUrl_addr(news_url.get(i));
+                    rc.setContent(news_body.get(i));
+                    rc.setRep_time(news_dates.get(i));
+                    list_r.add(rc);
                 }
             }
         }
-
-        //return list_r;
-    }
-
-
-    public static void main(String args[]) {
-
-        String url = "https://news.cnblogs.com/";
-        String result = ReptiliaHttp.ReptiliaResult(url);
-        //System.out.println(result);
-        getNewsInfo(result);
+        return list_r;
     }
 }

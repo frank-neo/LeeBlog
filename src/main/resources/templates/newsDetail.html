@@ -4,6 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer" />
     <title>每日资讯</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="../images/favicon.gif"/>
@@ -130,7 +131,7 @@
                                 <h4><a href="#"><span th:text="${newsdetail.getTitle()}"></span></a></h4>
                             </div>
                             <ul class="post-meta">
-                                <li><i class="icon-android"></i> 新闻均来自infQ的新闻版块，所有文章都会贴出原文地址，如果侵权行为请立马联系站长：</li>
+                                <li><i class="icon-android"></i> 新闻均来自博客园的新闻版块，所有文章都会贴出原文地址，如果侵权行为请立马联系站长：</li>
                                 <li><i class="icon-link"></i><a th:href="${newsdetail.getUrl_addr()}" th:target="'_Blank'"><span th:text="${newsdetail.getUrl_addr()}"></span></a></li>
                                 <!-- Comments -->
                             </ul>
