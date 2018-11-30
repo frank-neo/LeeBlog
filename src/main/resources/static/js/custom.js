@@ -173,7 +173,7 @@ $(document).ready(function ($) {
         $("<option />", {
             "selected": "selected",
             "value": "",
-            "text": "Main Navigation"
+            "text": "导航栏"
         }).appendTo($menu_select);
         $menu_select.appendTo("#main-navigation");
         $("#main-navigation ul li a").each(function () {

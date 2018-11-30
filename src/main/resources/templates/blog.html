@@ -131,7 +131,7 @@
                 <div class="three-fourth">
                     <ul th:each="lists:${bloglist}">
                         <div th:class="permalink">
-                            <a href="/">
+                            <a th:each="list:${lists}" th:href="'/blogDetail?id='+${list.getId()}">
                                 <h4><span th:each="list:${lists}" th:text="${list.getTitle()}"></span>
                                 </h4>
                             </a>

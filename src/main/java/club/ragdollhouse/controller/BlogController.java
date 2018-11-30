@@ -43,4 +43,14 @@ public class BlogController {
         model.addAttribute("pageList",blagPageList);
         return "blog";
     }
+
+    //博客明细页
+    @RequestMapping(value = "/blogDetail",method = RequestMethod.GET)
+    public String blogDetail(Model model, @RequestParam Map<String,String> mapParam){
+
+        int id = Integer.parseInt(mapParam.get("id"));
+        model.addAttribute("BlogEditor",blogService.blogDetail(id));
+        return "blogDetail";
+    }
+
 }

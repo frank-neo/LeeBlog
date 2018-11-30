@@ -16,7 +16,7 @@ public interface BlogMapper {
 
     //查询博文列表
     @Select("<script>" +
-                "SELECT title,author,content,blog_date,TYPE,samary FROM blog " +
+                "SELECT id,title,author,content,blog_date,TYPE,samary FROM blog " +
                 "<choose>"+
                     "<when test=\"type==null\">"+
                         "WHERE value_if = 'Y' limit #{pageNo},#{pageSize}" +
@@ -45,4 +45,8 @@ public interface BlogMapper {
                 "</choose>" +
             "</script>")
     int blogCount(@Param("type") String type);
+
+    //博客明细
+    @Select("SELECT title,author,content,blog_date,TYPE FROM blog WHERE value_if = 'Y' AND id = #{id}")
+    BlogEditor blogDetail(@Param("id") int id);
 }

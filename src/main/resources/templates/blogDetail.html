@@ -4,8 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="referrer" content="no-referrer" />
-    <title>每日资讯</title>
+    <title>博客详情</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="../images/favicon.gif"/>
     <link rel="stylesheet" href="../css/style.css" media="screen"/>
@@ -83,9 +82,9 @@
                     <ul class="main-menu">
                         <li><a href="/">首页</a>
                         </li>
-                        <li><a href="/blog">博客</a>
+                        <li><a href="/blog" id="current">博客</a>
                         </li>
-                        <li><a href="/newsInfo" id="current">新资讯</a>
+                        <li><a href="/newsInfo">新资讯</a>
                         </li>
                         <li><a href="#">商务合作</a>
                         </li>
@@ -128,16 +127,15 @@
                     <div class="three-fourth">
                         <div class="blog-post">
                             <div class="permalink">
-                                <h4><a href="#"><span th:text="${newsdetail.getTitle()}"></span></a></h4>
+                                <h4><a href="#"><span th:text="${BlogEditor.getTitle()}"></span></a></h4>
                             </div>
                             <ul class="post-meta">
-                                <li><i class="icon-android"></i> 新闻均来自博客园的新闻版块，所有文章都会贴出原文地址，如果侵权行为请立马联系站长：</li>
-                                <li><i class="icon-link"></i><a th:href="${newsdetail.getUrl_addr()}" th:target="'_Blank'"><span th:text="${newsdetail.getUrl_addr()}"></span></a></li>
+                                <li><i class="icon-link"></i><span th:text="'作者：'+${BlogEditor.getAuthor()}"></span></a></li>
                                 <!-- Comments -->
                             </ul>
                             <!-- End post-meta -->
                             <div class="post-intro">
-                                <p th:utext="${newsdetail.getContent()}"></p>
+                                <p th:utext="${BlogEditor.getContent()}"></p>
                             </div>
                         </div>
                         <div class="horizontal-line">
@@ -156,9 +154,9 @@
                             </nav>
                         </div>
                         <div class="widget">
-                            <h4 class="widget-title">关于每日新资讯的申明</h4>
+                            <h4 class="widget-title">关于博客内容的申明</h4>
                             <p>
-                                新资讯内部的新闻，均是站长通过爬虫爬取博客园的新闻信息，新闻内部也都会贴出原文地址，版权归博客园所有，拒绝一切商用，谢谢合作。
+                                不定期跟新，敬请关注！
                             </p>
                         </div>
 

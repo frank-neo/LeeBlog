@@ -5,6 +5,7 @@ package club.ragdollhouse.pojo;
  */
 public class BlogEditor {
 
+    private int id;
     private String title;
     private String author;
     private String content;
@@ -59,6 +60,14 @@ public class BlogEditor {
 
     public void setSamary(String samary) {
         this.samary = samary;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

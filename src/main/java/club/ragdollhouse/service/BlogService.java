@@ -31,4 +31,10 @@ public class BlogService {
     public int blogCount(String type){
         return blogMapper.blogCount(type);
     }
+
+
+    //博客明细
+    public BlogEditor blogDetail(int id){
+        return blogMapper.blogDetail(id);
+    }
 }
