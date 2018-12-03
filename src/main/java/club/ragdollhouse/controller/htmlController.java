@@ -18,9 +18,15 @@ public class htmlController {
     }
 
     //无权访问页面
-    @RequestMapping(value = "/nopermission",method = RequestMethod.GET)
-    public String nopermission(){
+    @RequestMapping(value = "/nopermission", method = RequestMethod.GET)
+    public String nopermission() {
         return "nopermission";
+    }
+
+    //商业合作
+    @RequestMapping(value = "/business_cop", method = RequestMethod.GET)
+    public String business_cop() {
+        return "business_cop";
     }
 
 }

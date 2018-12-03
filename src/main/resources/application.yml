@@ -2,8 +2,8 @@
 server:
   port: 80
   #ip,域名都设置在address
-  #address: 172.16.0.10
-  address: 10.14.6.246
+  address: 172.16.0.10
+  #address: 10.41.0.77
   tomcat:
     max-threads: 0
     uri-encoding: UTF-8
@@ -48,8 +48,8 @@ logging:
 #ueditor参数配置
 ueditor:
   #图片编辑暂存路径
-  path: C:/ueditor_img/testuedit_image
-  #path: /usr/staticfile/file/editorimg
+  #path: C:/ueditor_img/testuedit_image
+  path: /usr/staticfile/file/editorimg
   #编辑图片预览地址
-  viewurl: http://127.0.0.1:8099/testuedit_image/
-  #viewurl: http://ragdollhouse.club:8099/file/editorimg/
+  #viewurl: http://127.0.0.1:8099/testuedit_image/
+  viewurl: http://ragdollhouse.club:8099/file/editorimg/

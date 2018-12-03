@@ -47,8 +47,8 @@ function callback(data) {
     var str1 = JSON.parse(str);
     if (str1.insert_state == "success"){
         alert("提交成功啦！！！！点击确定跳转博客列表。");
-        window.location.replace("http://10.14.6.246/blog");
-        //window.location.replace("http://ragdollhouse.club/blog");
+        //window.location.replace("http://10.14.6.246/blog");
+        window.location.replace("http://ragdollhouse.club/blog");
     }else{
         alert("失败。");
     }

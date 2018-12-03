@@ -371,17 +371,18 @@ $(document).ready(function ($) {
 /*              17 - GOOGLE MAPS                             */
 /*----------------------------------------------------------*/
         if ($('#google-map').length && jQuery()) {
-            var $map = $('#google-map');
-            $map.gMap({
-                markers: [{
-                    'address': 'Level 13, 2 Elizabeth St, Melbourne Victoria 3000 Australia',
-                    icon: {
-                        image: 'images/marker-icon.png',
-                        iconsize: [25, 41],
-                    },
-                }],
-                zoom: 16,
-            });
+            //我们是用百度地图去替代google地图
+            // var $map = $('#google-map');
+            // $map.gMap({
+            //     markers: [{
+            //         'address': 'Level 13, 2 Elizabeth St, Melbourne Victoria 3000 Australia',
+            //         icon: {
+            //             image: 'images/marker-icon.png',
+            //             iconsize: [25, 41],
+            //         },
+            //     }],
+            //     zoom: 16,
+            // });
         }
 /*----------------------------------------------------------*/
 /*              18 - JQUERY TABS                            */
