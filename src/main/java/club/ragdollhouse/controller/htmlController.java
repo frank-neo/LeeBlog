@@ -29,4 +29,9 @@ public class htmlController {
         return "business_cop";
     }
 
+    //后台管理页面
+    @RequestMapping(value = "/lishaoxiong",method = RequestMethod.GET)
+    public String backConsle(){
+        return "backConsle";
+    }
 }

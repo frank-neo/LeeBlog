@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer" />
+    <title>首页管理后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="../images/favicon.gif"/>
+    <link rel="stylesheet" href="../css/style.css" media="screen"/>
+    <link rel="stylesheet" href="../css/responsive.css" media="screen"/>
+    <link rel="stylesheet" id="style-color" href="../css/colors/blue-color.css" media="screen"/>
+    <link rel="stylesheet" href="../css/googleapis-css.css" type='text/css'>
+    <link rel="stylesheet" href="../css/prettyPhoto.css" media="screen"/>
+    <link rel="stylesheet" href="../css/font-awesome/font-awesome.min.css" media="screen"/>
+    <link rel="stylesheet" href="../css/layer-slider.css" media="screen"/>
+    <link rel="stylesheet" href="../css/flexslider.css" media="screen"/>
+    <link rel="stylesheet" href="../css/revolution-slider.css" media="screen"/>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/flex-slider.min.js"></script>
+    <script type="text/javascript" src="../js/navigation.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.layerslider.js"></script>
+    <script type="text/javascript" src="../js/layerslider.transitions.js"></script>
+    <script type="text/javascript" src="../js/carousel.js"></script>
+    <script type="text/javascript" src="../js/jquery.theme.plugins.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="../js/flickr.js"></script>
+    <script type="text/javascript" src="../js/instagram.js"></script>
+    <script type="text/javascript" src="../js/prettyPhoto.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.tooltips.min.js"></script>
+    <script type="text/javascript" src="../js/isotope.min.js"></script>
+    <script type="text/javascript" src="../js/scrolltopcontrol.js"></script>
+    <script type="text/javascript" src="../js/jquery.easy-pie-chart.js"></script>
+    <script type="text/javascript" src="../js/jquery.transit.min.js"></script>
+    <script type="text/javascript" src="../js/custom.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../js/back-console.js"></script>
+</head>
+<body>
+<div id="container">
+    <!-- main container starts-->
+    <div id="wrapp">
+        <!-- main wrapp starts-->
+        <header id="header">
+            <!--header starts -->
+            <div id="header-links">
+                <div class="container">
+                    <div class="one-half">
+                        <ul class="contact-links">
+                            <!-- header social links starts-->
+                            <li><a href="#"><i class="icon-home"></i>现在位置：上海 </a></li>
+                            <li><a href="#"><i class="icon-map-marker"></i>FrankLee8399@163.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="one-half">
+                        <ul class="social-links">
+                            <a id="loginlink" href="/login" class="tooltip"
+                               target="_Blank">登录/注册</a>&nbsp;&nbsp;&nbsp;<i class="icon-pinterest"></i>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="head-wrapp">
+                    <a href="/" id="logo"><img src="../images/timg-logo.jpg" alt=""/></a>
+                    <span>欢迎来到李少雄的博客,域名：ragdollhouse.club</span>
+                    <!--your logo-->
+                </div>
+            </div>
+            <div id="main-navigation">
+                <!--main navigation wrapper starts -->
+                <div class="container">
+                    <ul class="main-menu">
+                        <li><a href="/">首页</a>
+                        </li>
+                        <li><a href="/blog">博客</a>
+                        </li>
+                        <li><a href="/newsInfo">新资讯</a>
+                        </li>
+                        <li><a href="/business_cop">商务合作</a>
+                        </li>
+                        <li><a href="#">站内数据分析</a>
+                        </li>
+                        <li><a href="#">关于本站</a>
+                        </li>
+                        <li><a href="#"  id="current">首页发布页面</a>
+                        </li>
+                    </ul>
+                    <!-- main navigation ends-->
+                    <div class="after-nav-info">
+                        <h4>联系邮箱: FrankLee8399@163.com</h4>
+                    </div>
+                </div>
+            </div>
+            <!--main navigation wrapper ends -->
+        </header>
+        <div id="content">
+            <div id="breadcrumb">
+                <!-- breadcrumb starts-->
+                <div class="container">
+                    <div class="one-half">
+                        <a href="javascript:history.go(-1)"><h4>返回</h4></a>
+                    </div>
+                    <div class="one-half">
+                        <nav id="breadcrumbs">
+                            <!--breadcrumb nav starts-->
+                            <ul>
+                                <li>欢迎 :</li>
+                                <li>系统管理员！</li>
+                            </ul>
+                        </nav>
+                        <!--breadcrumb nav ends -->
+                    </div>
+                </div>
+            </div>
+            <!--breadcrumbs ends -->
+            <div class="container">
+                <div class="one">
+                    <div class="three-fourth">
+                        <div class="one-half">
+                           <h3>标题一</h3>
+                            <form id="form-add-b1">
+                            <fieldset>
+                                <input type="file" class="custom-file" name="file">
+                            </fieldset><br>
+                            <input type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                            <input type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                            <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                            </form>
+                            <button class="button color big circle" onclick="changeTitle(1)">跟新</button>
+                        </div>
+                        <div class="one-half">
+                            <h3>标题二</h3>
+                            <form id="form-add-b2">
+                            <fieldset>
+                                <input type="file" class="custom-file" name="file">
+                            </fieldset><br>
+                            <input type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                            <input type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                            <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                            </form>
+                            <button class="button color big circle">跟新</button>
+                        </div>
+                        <div class="horizontal-line"></div>
+                            <div class="one-half">
+                                <h3>标题三</h3>
+                                <form id="form-add-b3">
+                                <fieldset>
+                                    <input type="file" class="custom-file" name="file">
+                                </fieldset><br>
+                                <input type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                </form>
+                                <button class="button color big circle">跟新</button>
+                            </div>
+                            <div class="one-half">
+                                <h3>标题四</h3>
+                                <form id="form-add-b4">
+                                <fieldset>
+                                    <input type="file" class="custom-file" name="file">
+                                </fieldset><br>
+                                <input type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input  type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                </form>
+                                <button class="button color big circle">跟新</button>
+                            </div>
+                            <div class="horizontal-line"></div>
+                            <!--日推新闻-->
+                            <div class="one-half">
+                                <h3>日推1</h3>
+                                <form id="form-add-z1">
+                                <input type="text" id="z_data1" class="text requiredField" name="data" onblur="if(this.value=='')this.value='文章日期';" onfocus="if(this.value=='文章日期')this.value='';" value="文章日期"><br>
+                                <input type="text" id="z_title1" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input type="text" id="z_link1" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea id="z_abs1" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                </form>
+                                <button id="z_button1" class="button color big circle">跟新</button>
+                            </div>
+                            <div class="one-half">
+                                <h3>日推2</h3>
+                                <form id="form-add-z2">
+                                <input type="text" id="z_data2" class="text requiredField" name="data" onblur="if(this.value=='')this.value='文章日期';" onfocus="if(this.value=='文章日期')this.value='';" value="文章日期"><br>
+                                <input type="text" id="z_title2" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input type="text" id="z_link2" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea id="z_abs2" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                </form>
+                                <button id="z_button2" class="button color big circle">跟新</button>
+                            </div>
+                            <div class="horizontal-line"></div>
+                            <div class="one-half">
+                                <h3>日推3</h3>
+                                <form id="form-add-z3">
+                                <input type="text" id="z_data3" class="text requiredField" name="data" onblur="if(this.value=='')this.value='文章日期';" onfocus="if(this.value=='文章日期')this.value='';" value="文章日期"><br>
+                                <input type="text" id="z_title3" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input type="text" id="z_link3" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea id="z_abs3" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                </form>
+                                <button id="z_button3" class="button color big circle">跟新</button>
+                            </div>
+                            <div class="horizontal-line"></div>
+                            <!--推荐博客-->
+                            <div class="one-half">
+                                <h3>推博1</h3>
+                                <form id="form-add-t1">
+                                <fieldset>
+                                    <input type="file" class="custom-file" id="t_file1">
+                                </fieldset><br>
+                                <input id="t_title1" type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input id="t_link1" type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea id="t_abs1" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                </form>
+                                <button id="t_button1" class="button color big circle">跟新</button>
+                            </div>
+                            <div class="one-half">
+                                <h3>推博2</h3>
+                                <form id="form-add-t2">
+                                <fieldset>
+                                    <input type="file" class="custom-file" id="t_file2">
+                                </fieldset><br>
+                                <input id="t_title2" type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input id="t_link2" type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea id="t_abs2" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                </form>
+                                <button id="t_button2" class="button color big circle">跟新</button>
+                            </div>
+                            <div class="horizontal-line"></div>
+                            <div class="one-half">
+                                <h3>推博3</h3>
+                                <form id="form-add-t3">
+                                <fieldset>
+                                    <input type="file" class="custom-file" id="t_file3">
+                                </fieldset><br>
+                                <input id="t_title3" type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input id="t_link3" type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea id="t_abs3" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                </form>
+                                <button id="t_button3" class="button color big circle">跟新</button>
+                            </div>
+                            <div class="one-half">
+                                <h3>推博4</h3>
+                                <form id="form-add-t4">
+                                <fieldset>
+                                    <input type="file" class="custom-file" id="t_file4">
+                                </fieldset><br>
+                                <input id="t_title4" type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input id="t_link4" type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea id="t_abs4" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                </form>
+                                <button id="t_button4" class="button color big circle">跟新</button>
+                            </div>
+                            <div class="horizontal-line"></div>
+                    </div>
+
+                    <div class="one-fourth sidebar right">
+                        <div class="widget">
+                            <h4 class="widget-title">关于首页发布后台的申明</h4>
+                            <p>
+                                每次跟新，首页将只取最近发布的内容。所有操作数据库留痕。
+                            </p>
+                        </div>
+
+                        <div class="widget">
+                            <h4 class="widget-title">预留位置</h4>
+                            <div class="flickr-widget inner">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="footer-call-to-action"><!-- footer call to action starts -->
+        <section class="container">
+            <div class="three-fourth">
+                <h4>如果你对本网站感到兴趣，不妨联系我。</h4>
+            </div>
+            <div class="one-fourth">
+                <a href="#" class="button grey huge round">联系方式</a>
+            </div>
+        </section>
+    </section><!-- footer call to action ends -->
+    <footer id="footer"><!--footer starts -->
+        <section class="container">
+            <section class="one-third">
+                <h4>QQ交流群</h4>
+                <ul class="twitter-feeds">
+                    <!-- twitter widget starts-->
+                </ul>
+                <!-- twitter widget ends-->
+                <p>
+                    <a href="#">+ 858208157</a>
+                </p>
+            </section>
+            <section class="one-third">
+                <h4>网站声明</h4>
+                <ul>
+                    <!-- latest posts widget starts-->
+                    <li><a href="#">本网站暂时不接任何广告等商业业务</a></li>
+                    <li><a href="#">仅仅作为博主的经验分享</a></li>
+                    <li><a href="#">以及开发爱好者的聚集地</a></li>
+                    <li><a href="#">谢谢大家捧场</a></li>
+                </ul>
+                <!-- lastest posts widget ends-->
+            </section>
+            <section class="one-third">
+                <h4>还没想好</h4>
+                <div class="flickr-widget">
+                    <!-- flickr widget starts-->
+                </div>
+            </section>
+        </section>
+    </footer>
+    <section id="copyrights">
+        <section class="container">
+            <div class="one-half">
+                <p>
+                    Copyright &copy; 2014.Company name All rights reserved.More Templates <br>
+                    <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">本网站页面展示效果，来源于模板之家开源项目，感谢模板之家的支持</a>
+                </p>
+            </div>
+            <div class="one-half">
+                <ul class="copyright_links">
+                    <li><a href="/" title="Home">Home</a></li>
+                    <li><a href="#" title="About">About us</a></li>
+                    <li><a href="#" title="Blog">Blog</a></li>
+                    <li><a href="#" title="Contact">Contact</a></li>
+                </ul>
+            </div>
+        </section>
+    </section>
+</div>
+</body>
+</html>

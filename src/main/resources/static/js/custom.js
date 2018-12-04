@@ -459,7 +459,7 @@ $(document).ready(function ($) {
                 $('.requiredField').each(function () {
                     if (jQuery.trim($(this).val()) == '') {
                         var formInput = $(this).attr("title");
-                        $("#error-field").append('<div class="notification error"><p><i class="icon-warning-sign"></i>Please Enter ' +
+                        $("#error-field").append('<div class="notification error"><p><i class="icon-warning-sign"></i>请输入 ' +
                             formInput + '</p></div> ');
                         $(this).addClass('inputError');
                         hasError = true;
@@ -468,7 +468,7 @@ $(document).ready(function ($) {
                         if (!emailReg.test(jQuery.trim($(this).val()))) {
                             var formInput = $(this).attr("title");
                             $("#error-field").append(
-                                '<div class="notification error"><p><i class="icon-warning-sign"></i>You entered an invalid Value - ' +
+                                '<div class="notification error"><p><i class="icon-warning-sign"></i>你输入了一个无效的 - ' +
                                 formInput + '</p></div>');
                             $(this).addClass('inputError');
                             hasError = true;

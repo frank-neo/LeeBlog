@@ -25,7 +25,7 @@ public class UrlFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        logger.info("UrlFilter初始化执行。。。");
+        //logger.info("UrlFilter初始化执行。。。");
     }
 
     @Override
@@ -37,8 +37,8 @@ public class UrlFilter implements Filter {
         //获取请求url
         String uri = request.getRequestURI();
 
-        //匹配到/EditBlogCheck请求的核实身份
-        if (uri.equals("/gotoEdit")) {
+        //匹配到/EditBlogCheck请求的核实身份【contains是检查包含关系，排除///////EditBlogCheck的情况】
+        if (uri.contains("/gotoEdit")||uri.contains("/lishaoxiong")) {
             String nickname = null;
             String buildtoken = null;
 
@@ -78,6 +78,6 @@ public class UrlFilter implements Filter {
 
     @Override
     public void destroy() {
-        logger.info("UrlFilter销毁时执行。。。");
+        //logger.info("UrlFilter销毁时执行。。。");
     }
 }
