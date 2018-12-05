@@ -140,7 +140,7 @@
                             <input type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
                             <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
                             </form>
-                            <button class="button color big circle">跟新</button>
+                            <button class="button color big circle" onclick="changeTitle(2)">跟新</button>
                         </div>
                         <div class="horizontal-line"></div>
                             <div class="one-half">
@@ -153,7 +153,7 @@
                                 <input type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
                                 <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
                                 </form>
-                                <button class="button color big circle">跟新</button>
+                                <button class="button color big circle" onclick="changeTitle(3)">跟新</button>
                             </div>
                             <div class="one-half">
                                 <h3>标题四</h3>
@@ -165,40 +165,40 @@
                                 <input  type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
                                 <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
                                 </form>
-                                <button class="button color big circle">跟新</button>
+                                <button class="button color big circle" onclick="changeTitle(4)">跟新</button>
                             </div>
                             <div class="horizontal-line"></div>
                             <!--日推新闻-->
                             <div class="one-half">
                                 <h3>日推1</h3>
                                 <form id="form-add-z1">
-                                <input type="text" id="z_data1" class="text requiredField" name="data" onblur="if(this.value=='')this.value='文章日期';" onfocus="if(this.value=='文章日期')this.value='';" value="文章日期"><br>
-                                <input type="text" id="z_title1" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
-                                <input type="text" id="z_link1" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
-                                <textarea id="z_abs1" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                <input type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input type="text" class="text requiredField" name="data" onblur="if(this.value=='')this.value='文章日期';" onfocus="if(this.value=='文章日期')this.value='';" value="文章日期"><br>
+                                <input type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
                                 </form>
-                                <button id="z_button1" class="button color big circle">跟新</button>
+                                <button class="button color big circle" onclick="changeZixun(1)">跟新</button>
                             </div>
                             <div class="one-half">
                                 <h3>日推2</h3>
                                 <form id="form-add-z2">
-                                <input type="text" id="z_data2" class="text requiredField" name="data" onblur="if(this.value=='')this.value='文章日期';" onfocus="if(this.value=='文章日期')this.value='';" value="文章日期"><br>
-                                <input type="text" id="z_title2" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
-                                <input type="text" id="z_link2" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
-                                <textarea id="z_abs2" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                <input type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input type="text" class="text requiredField" name="data" onblur="if(this.value=='')this.value='文章日期';" onfocus="if(this.value=='文章日期')this.value='';" value="文章日期"><br>
+                                <input type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
                                 </form>
-                                <button id="z_button2" class="button color big circle">跟新</button>
+                                <button  class="button color big circle" onclick="changeZixun(2)">跟新</button>
                             </div>
                             <div class="horizontal-line"></div>
                             <div class="one-half">
                                 <h3>日推3</h3>
                                 <form id="form-add-z3">
-                                <input type="text" id="z_data3" class="text requiredField" name="data" onblur="if(this.value=='')this.value='文章日期';" onfocus="if(this.value=='文章日期')this.value='';" value="文章日期"><br>
-                                <input type="text" id="z_title3" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
-                                <input type="text" id="z_link3" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
-                                <textarea id="z_abs3" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                <input type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input type="text" class="text requiredField" name="data" onblur="if(this.value=='')this.value='文章日期';" onfocus="if(this.value=='文章日期')this.value='';" value="文章日期"><br>
+                                <input type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
                                 </form>
-                                <button id="z_button3" class="button color big circle">跟新</button>
+                                <button class="button color big circle" onclick="changeZixun(3)">跟新</button>
                             </div>
                             <div class="horizontal-line"></div>
                             <!--推荐博客-->
@@ -206,50 +206,50 @@
                                 <h3>推博1</h3>
                                 <form id="form-add-t1">
                                 <fieldset>
-                                    <input type="file" class="custom-file" id="t_file1">
+                                    <input type="file" class="custom-file" name="file">
                                 </fieldset><br>
-                                <input id="t_title1" type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
-                                <input id="t_link1" type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
-                                <textarea id="t_abs1" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                <input  type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input  type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
                                 </form>
-                                <button id="t_button1" class="button color big circle">跟新</button>
+                                <button class="button color big circle" onclick="changeTuiBo(1)">跟新</button>
                             </div>
                             <div class="one-half">
                                 <h3>推博2</h3>
                                 <form id="form-add-t2">
                                 <fieldset>
-                                    <input type="file" class="custom-file" id="t_file2">
+                                    <input type="file" class="custom-file" name="file">
                                 </fieldset><br>
-                                <input id="t_title2" type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
-                                <input id="t_link2" type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
-                                <textarea id="t_abs2" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                <input type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
                                 </form>
-                                <button id="t_button2" class="button color big circle">跟新</button>
+                                <button class="button color big circle" onclick="changeTuiBo(2)">跟新</button>
                             </div>
                             <div class="horizontal-line"></div>
                             <div class="one-half">
                                 <h3>推博3</h3>
                                 <form id="form-add-t3">
                                 <fieldset>
-                                    <input type="file" class="custom-file" id="t_file3">
+                                    <input type="file" class="custom-file" name="file">
                                 </fieldset><br>
-                                <input id="t_title3" type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
-                                <input id="t_link3" type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
-                                <textarea id="t_abs3" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                <input type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
                                 </form>
-                                <button id="t_button3" class="button color big circle">跟新</button>
+                                <button class="button color big circle" onclick="changeTuiBo(3)">跟新</button>
                             </div>
                             <div class="one-half">
                                 <h3>推博4</h3>
                                 <form id="form-add-t4">
                                 <fieldset>
-                                    <input type="file" class="custom-file" id="t_file4">
+                                    <input type="file" class="custom-file" name="file">
                                 </fieldset><br>
-                                <input id="t_title4" type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
-                                <input id="t_link4" type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
-                                <textarea id="t_abs4" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
+                                <input type="text" class="text requiredField" name="title1_title" onblur="if(this.value=='')this.value='文章标题';" onfocus="if(this.value=='文章标题')this.value='';" value="文章标题"><br>
+                                <input  type="text" class="text requiredField" name="work_link" onblur="if(this.value=='')this.value='文章链接';" onfocus="if(this.value=='文章链接')this.value='';" value="文章链接"><br>
+                                <textarea name="abs_text" onfocus="if(this.value=='摘要')this.value='';" cols="30" rows="8" title="摘要" class="text requiredField">摘要</textarea>
                                 </form>
-                                <button id="t_button4" class="button color big circle">跟新</button>
+                                <button class="button color big circle" onclick="changeTuiBo(4)">跟新</button>
                             </div>
                             <div class="horizontal-line"></div>
                     </div>

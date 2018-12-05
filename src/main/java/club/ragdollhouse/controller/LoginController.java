@@ -31,12 +31,6 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    //默认登录页面
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String defult(){
-        return "index";
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "login2";

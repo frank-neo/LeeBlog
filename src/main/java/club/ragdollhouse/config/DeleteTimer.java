@@ -46,8 +46,8 @@ public class DeleteTimer implements ApplicationRunner {
                 deleteTimerService.deleteUselessRegister();
                 logger.info("昨日注册失效数据已经删除。");
                 //清除过期新闻
-                deleteTimerService.deleteUselessInfNews();
-                logger.info("过期新闻数据已经删除。");
+                //deleteTimerService.deleteUselessInfNews();
+                //logger.info("过期新闻数据已经删除。");
 
             }
         },time,1000L * 60 * 60 * 24);

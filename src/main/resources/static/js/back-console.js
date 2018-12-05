@@ -1,7 +1,7 @@
 //标题修改提交
 function changeTitle(num) {
 
-    var formadd = 'form-add-b'+num;
+    var formadd = 'form-add-b' + num;
 
     // 获取页面已有的一个form表单
     var form = document.getElementById(formadd);
@@ -18,7 +18,61 @@ function changeTitle(num) {
     //区分种类
     formData.append("type", "B");
     //标记下标
-    formData.append("index", "1");
+    formData.append("index", num);
+
+    jQuery.ajax({
+        type: "POST",
+        url: "../backConsoleCheck",
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,//用了火狐报错XML 解析错误：找不到根元素,不用后台报错request无法转型为MultipartFile
+        processData: false,
+        success: ajaxcheck
+    });
+
+}
+
+//咨询修改提交
+function changeZixun(num) {
+    var formadd = 'form-add-z' + num;
+
+    // 获取页面已有的一个form表单
+    var form = document.getElementById(formadd);
+    // 用表单来初始化
+    var formData = new FormData(form);
+    // 当然也可以在此基础上，添加其他数据
+    //区分种类
+    formData.append("type", "Z");
+    //标记下标
+    formData.append("index", num);
+
+    jQuery.ajax({
+        type: "POST",
+        url: "../backConsoleCheck",
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,//用了火狐报错XML 解析错误：找不到根元素,不用后台报错request无法转型为MultipartFile
+        processData: false,
+        success: ajaxcheck
+    });
+}
+
+//推荐博客修改
+function changeTuiBo(num) {
+
+    var formadd = 'form-add-t' + num;
+
+    // 获取页面已有的一个form表单
+    var form = document.getElementById(formadd);
+    // 用表单来初始化
+    var formData = new FormData(form);
+    // 当然也可以在此基础上，添加其他数据
+    //区分种类
+    formData.append("type", "T");
+    //标记下标
+    formData.append("index", num);
 
     jQuery.ajax({
         type: "POST",
@@ -34,5 +88,6 @@ function changeTitle(num) {
 }
 
 function ajaxcheck(data) {
+
     alert(data);
 }

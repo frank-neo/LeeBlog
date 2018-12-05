@@ -60,3 +60,5 @@ homepage:
   #上传路径
   path: C:/ueditor_img/indexpage
   #path: /usr/staticfile/file/indexpage
+  viewurl: http://127.0.0.1:8099/indexpage/
+  #viewurl: http://ragdollhouse.club:8099/file/indexpage/
