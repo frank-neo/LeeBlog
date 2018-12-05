@@ -124,48 +124,21 @@
         </div>
         <!--home intro ends-->
         <div class="container">
-            <div class="one-third">
-                <div class="feature-block"><!-- features blocks starts -->
-                    <div class="feature-block-title">
-                        <div class="feature-block-icon">
-                            <i class="icon-lightbulb"></i><span></span>
+            <ul th:each="riTuiLists,iterStat : ${riTuiList}">
+            <div th:class="'one-third'">
+                <div th:class="'feature-block'"><!-- features blocks starts -->
+                    <div th:class="'feature-block-title'">
+                        <div th:class="'feature-block-icon'">
+                            <i th:class="'icon-lightbulb'"></i><span></span>
                         </div>
-                        <a href="http://www.baidu.com/"><h4>这里是默认最新消息第一条</h4></a>
-                        <h6>概述</h6>
+                        <a th:href="${riTuiLists.getWorks_link()}"><h4 th:text="${riTuiLists.getTitle()}"></h4></a>
+                        <h6 th:text="${riTuiLists.getDate()}"></h6>
                     </div>
-                    <p>
-                        测试数据：文章片段1.
+                    <p th:text="${riTuiLists.getAbstracts()}">
                     </p>
                 </div>
             </div>
-            <div class="one-third">
-                <div class="feature-block">
-                    <div class="feature-block-title">
-                        <div class="feature-block-icon">
-                            <i class="icon-lightbulb"></i><span></span>
-                        </div>
-                        <a href="http://www.baidu.com/"><h4>这里是默认最新消息第二条</h4></a>
-                        <h6>概述</h6>
-                    </div>
-                    <p>
-                        测试数据：文章片段2.
-                    </p>
-                </div>
-            </div>
-            <div class="one-third">
-                <div class="feature-block">
-                    <div class="feature-block-title">
-                        <div class="feature-block-icon">
-                            <i class="icon-lightbulb"></i><span></span>
-                        </div>
-                        <a href="http://www.baidu.com/"><h4>这里是默认最新消息第三条</h4></a>
-                        <h6>概述</h6>
-                    </div>
-                    <p>
-                        测试数据：文章片段3.
-                    </p>
-                </div>
-            </div><!--features block ends-->
+            </ul>
         </div>
 
         <div class="intro-features"><!-- intro features panel starts -->
@@ -175,156 +148,25 @@
                     <!--project carousel starts-->
                     <ul class="slider" id="sliderName">
                         <li class="slide"><!-- carousel item starts -->
-                            <div class="one-fourth">
-                                <div class="item-wrapp">
-                                    <div class="portfolio-item">
-                                        <a href="single-project-small.html" class="item-permalink"><i
-                                                class="icon-link"></i></a>
-                                        <a href="images/portfolio/portfolio-item-1.jpg" data-rel="prettyPhoto"
-                                           class="item-preview"><i class="icon-zoom-in"></i></a>
-                                        <img src="images/portfolio/portfolio-item-1.jpg" alt=""/>
+                            <ul th:each="tuiboLists,iterStat : ${tuiboList}">
+                            <div th:class="'one-fourth'">
+                                <div th:class="'item-wrapp'">
+                                    <div th:class="'portfolio-item'">
+                                        <a th:href="${tuiboLists.getWorks_link()}" th:class="'item-permalink'"><i
+                                                th:class="'icon-link'"></i></a>
+                                        <a th:href="${tuiboLists.getPicture_link()}" th:data-rel="'prettyPhoto'"
+                                           th:class="'item-preview'"><i th:class="'icon-zoom-in'"></i></a>
+                                        <img th:src="${tuiboLists.getPicture_link()}" th:alt="''"/>
                                     </div>
-                                    <div class="portfolio-item-title">
-                                        <a href="single-project-small.html">推荐1</a>
-                                        <p>
-                                            picture                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="one-fourth">
-                                <div class="item-wrapp">
-                                    <div class="portfolio-item">
-                                        <a href="single-project-small.html" class="item-permalink"><i
-                                                class="icon-link"></i></a>
-                                        <a href="../images/portfolio/portfolio-item-2.jpg" data-rel="prettyPhoto"
-                                           class="item-preview"><i class="icon-zoom-in"></i></a>
-                                        <img src="images/portfolio/portfolio-item-2.jpg" alt=""/>
-                                    </div>
-                                    <div class="portfolio-item-title">
-                                        <a href="single-project-small.html">推荐2</a>
-                                        <p>
-                                            推荐内容2
-                                        </p>
+                                    <div th:class="'portfolio-item-title'">
+                                        <a th:href="${tuiboLists.getWorks_link()}" th:text="${tuiboLists.getTitle()}"></a>
+                                        <p th:text="${tuiboLists.getAbstracts()}"></p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="one-fourth">
-                                <div class="item-wrapp">
-                                    <div class="flexslider portfolio-items-slider fade">
-                                        <ul class="slides">
-                                            <li><img src="images/portfolio/portfolio-item-3.jpg" alt=""/></li>
-                                            <li><img src="images/portfolio/portfolio-item-4.jpg" alt=""/></li>
-                                            <li><img src="images/portfolio/portfolio-item-5.jpg" alt=""/></li>
-                                        </ul>
-                                    </div>
-                                    <div class="portfolio-item-title">
-                                        <a href="single-project-small.html">推荐3</a>
-                                        <p>
-                                            推荐内容
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="one-fourth">
-                                <div class="item-wrapp">
-                                    <div class="portfolio-item">
-                                        <a href="single-project-small.html" class="item-permalink"><i
-                                                class="icon-link"></i></a>
-                                        <a href="images/portfolio/portfolio-item-6.jpg" data-rel="prettyPhoto"
-                                           class="item-preview"><i class="icon-zoom-in"></i></a>
-                                        <img src="images/portfolio/portfolio-item-6.jpg" alt=""/>
-                                    </div>
-                                    <div class="portfolio-item-title">
-                                        <a href="single-project-small.html">推荐内容</a>
-                                        <p>
-                                            推荐内容
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="slide"><!-- carousel item starts -->
-                            <div class="one-fourth">
-                                <div class="item-wrapp">
-                                    <div class="portfolio-item">
-                                        <a href="single-project-small.html" class="item-permalink"><i
-                                                class="icon-link"></i></a>
-                                        <a href="images/portfolio/portfolio-item-7.jpg" data-rel="prettyPhoto"
-                                           class="item-preview"><i class="icon-zoom-in"></i></a>
-                                        <img src="images/portfolio/portfolio-item-7.jpg" alt=""/>
-                                    </div>
-                                    <div class="portfolio-item-title">
-                                        <a href="single-project-small.html">推荐内容</a>
-                                        <p>
-                                            推荐内容
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="one-fourth">
-                                <div class="item-wrapp">
-                                    <div class="portfolio-item">
-                                        <a href="single-project-small.html" class="item-permalink"><i
-                                                class="icon-link"></i></a>
-                                        <a href="images/portfolio/portfolio-item-8.jpg" data-rel="prettyPhoto"
-                                           class="item-preview"><i class="icon-zoom-in"></i></a>
-                                        <img src="images/portfolio/portfolio-item-8.jpg" alt=""/>
-                                    </div>
-                                    <div class="portfolio-item-title">
-                                        <a href="single-project-small.html">推荐内容</a>
-                                        <p>
-                                            推荐内容
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="one-fourth">
-                                <div class="item-wrapp">
-                                    <div class="portfolio-item">
-                                        <a href="single-project-small.html" class="item-permalink"><i
-                                                class="icon-link"></i></a>
-                                        <a href="images/portfolio/portfolio-item-9.jpg" data-rel="prettyPhoto"
-                                           class="item-preview"><i class="icon-zoom-in"></i></a>
-                                        <img src="images/portfolio/portfolio-item-9.jpg" alt=""/>
-                                    </div>
-                                    <div class="portfolio-item-title">
-                                        <a href="single-project-small.html">推荐内容</a>
-                                        <p>
-                                            推荐内容
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="one-fourth">
-                                <div class="item-wrapp">
-                                    <div class="portfolio-item">
-                                        <a href="single-project-small.html" class="item-permalink"><i
-                                                class="icon-link"></i></a>
-                                        <a href="images/portfolio/portfolio-item-10.jpg" data-rel="prettyPhoto"
-                                           class="item-preview"><i class="icon-zoom-in"></i></a>
-                                        <img src="images/portfolio/portfolio-item-10.jpg" alt=""/>
-                                    </div>
-                                    <div class="portfolio-item-title">
-                                        <a href="single-project-small.html">推荐内容</a>
-                                        <p>
-                                            推荐内容
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            </ul>
                         </li>
                     </ul><!-- carousel items UL ends -->
-                    <ul class="slidecontrols">
-                        <li><a href="#sliderName" class="prev">Prev</a></li>
-                        <li><a href="#sliderName" class="next">Next</a></li>
-
-                    </ul>
                 </div>
             </div>
         </div><!-- intro features panel ends -->
