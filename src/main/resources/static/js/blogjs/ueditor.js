@@ -4,8 +4,7 @@ var ue = UE.getEditor('editor');
 
 //获取文章正文
 function getContent() {
-    var arr = [];
-    arr.push(UE.getEditor('editor').getContent());
+    var arr = UE.getEditor('editor').getContent().replace(/\%/g,'%25');
     //var blog_data = JSON.stringify(arr);
     return  arr;
 }
@@ -31,13 +30,14 @@ function getblog_type() {
 function dosubmit() {
 
     //等号左右一定不能有空格
-    var blogcontent = "blogcontent="+ getContent()+"&title="+gettitle()+"&author="+getauthor()+"&getblog_type="+getblog_type();
+    var blogcontent = "blogcontent="+getContent()+"&title="+gettitle()+"&author="+getauthor()+"&getblog_type="+getblog_type();
 
     jQuery.ajax({
         type: "POST",
         url: "../ueditorSubmit",
         data: blogcontent,
         dataType:"JSON",
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
         success: callback
     });
 }

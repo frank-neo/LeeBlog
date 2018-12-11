@@ -114,6 +114,7 @@ public class ReptiliaUtil {
                 }
                 //循环封装list_r
                 int newssizes = news_Titles.size();
+                //System.out.println("|||||||||||||||||||||||||||||||||爬虫数组的长度为："+newssizes);
                 for (int i = 0; i < newssizes; i++) {
                     ReptiliaCheck rc = new ReptiliaCheck();
                     rc.setTitle(news_Titles.get(i));
@@ -122,6 +123,7 @@ public class ReptiliaUtil {
                     rc.setContent(news_body.get(i));
                     rc.setRep_time(news_dates.get(i));
                     list_r.add(rc);
+                    //System.out.println("======================================>此时i的值为："+i);
                 }
             }
         }
