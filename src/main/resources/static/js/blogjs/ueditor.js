@@ -4,9 +4,9 @@ var ue = UE.getEditor('editor');
 
 //获取文章正文
 function getContent() {
-    var arr = UE.getEditor('editor').getContent().replace(/\%/g,'%25');
+    var arr = UE.getEditor('editor').getContent().replace(/\%/g, '%25');//将传回去的%转义为25%，不然警告。
     //var blog_data = JSON.stringify(arr);
-    return  arr;
+    return arr;
 }
 
 //获取文章标题
@@ -27,16 +27,22 @@ function getblog_type() {
     return blog_type;
 }
 
+//获取文章摘要
+function getblog_samary() {
+    var samary = jQuery("#samary").val();
+    return samary;
+}
+
 function dosubmit() {
 
     //等号左右一定不能有空格
-    var blogcontent = "blogcontent="+getContent()+"&title="+gettitle()+"&author="+getauthor()+"&getblog_type="+getblog_type();
+    var blogcontent = "blogcontent=" + getContent() + "&title=" + gettitle() + "&author=" + getauthor() + "&getblog_type=" + getblog_type() + "&samary=" + getblog_samary();
 
     jQuery.ajax({
         type: "POST",
         url: "../ueditorSubmit",
         data: blogcontent,
-        dataType:"JSON",
+        dataType: "JSON",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         success: callback
     });
@@ -45,11 +51,11 @@ function dosubmit() {
 function callback(data) {
     var str = JSON.stringify(data);
     var str1 = JSON.parse(str);
-    if (str1.insert_state == "success"){
+    if (str1.insert_state == "success") {
         alert("提交成功啦！！！！点击确定跳转博客列表。");
         //window.location.replace("http://10.14.6.246/blog");
         window.location.replace("http://ragdollhouse.club/blog");
-    }else{
+    } else {
         alert("失败。");
     }
 }

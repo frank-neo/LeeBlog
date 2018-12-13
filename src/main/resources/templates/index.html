@@ -93,27 +93,17 @@
         </header>
         <!-- header ends-->
         <div id="layerslider">
-            <ul th:each="titleLists:${titleList}">
             <!--layer slider starts-->
-            <div th:class="'slider-shadow-top'">
+            <div class="'slider-shadow-top'">
             </div>
-            <div th:class="'slider-shadow-bottom'">
+            <div class="'slider-shadow-bottom'">
             </div>
-            <div th:class="'ls-layer'"
-                 th:style="'slidedirection: top; slidedelay: 6000; durationin: 1500; durationout: 1500; delayout: 500;'">
-
-                <img th:each="titleList : ${titleLists}" th:src="${titleList.getPicture_link()}" th:class="'ls-s6'" th:alt="''"
-                     th:style="'top: 10px; left: -15px; slidedirection : bottom; slideoutdirection : bottom; durationin : 1500; durationout : 750; easingin : easeInOutQuint; easingout : easeInOutQuint; delayin : 600;'">
-                <h1 th:class="'ls-s3 ls_large_text_01'"
-                    th:style="'position: absolute; top:100px; left: 490px; slidedirection : top; slideoutdirection : top; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInBack; delayin : 1000;'">
-                    <span th:each="titleList : ${titleLists}" th:text="${titleList.getTitle()}"></span><br>
-                </h1>
-                <h4 th:class="'ls-s3 l1-s1 ls_large_text_02'"
-                    th:style="'position: absolute; top:210px; left: 490px; slidedirection : bottom; slideoutdirection : bottom; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInBack; delayin : 1000;'">
-                    <span th:each="titleList : ${titleLists}" th:text="${titleList.getAbstracts()}"></span></h4>
-                <a th:class="'button huge color round ls-s8'" th:each="titleList : ${titleLists}" th:href="${titleList.getWorks_link()}"
-                   th:style="'position: absolute; top:270px; left: 490px; slidedirection : bottom; slideoutdirection : bottom; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInOutQuint; delayin : 1100;'">查看更多</a>
-            </div>
+            <ul th:each="titleLists:${titleList}">
+                    <!--<div th:class="'ls-layer'" th:each="titleList : ${titleLists}" th:onclick="'window.open(\''+${titleList.getWorks_link()}+'\',\'_self\')'" -->
+                <div th:class="'ls-layer'" th:each="titleList : ${titleLists}" th:onclick="'window.open(\''+${titleList.getWorks_link()}+'\')'"
+                th:style="'slidedirection: top; slidedelay: 6000; durationin: 1500; durationout: 1500; delayout: 500;'">
+                    <img th:each="titleList : ${titleLists}" th:src="${titleList.getPicture_link()}" th:class="'ls-bg'" th:alt="''" />
+                </div>
             </ul>
         </div>
 

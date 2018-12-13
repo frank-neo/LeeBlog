@@ -49,7 +49,7 @@ $.fn.extend({
 					setTimeout(function() {
 						$( elem ).focus();
 						if ( fn ) {
-							fn.call( elem );
+							fn.call( elem );ls-layer
 						}
 					}, delay );
 				}) :

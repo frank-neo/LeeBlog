@@ -72,13 +72,18 @@ public class ReptiliaUtil {
 
                 //开始爬文章摘要
                 //Pattern newsabstract = Pattern.compile("class=\"topic_img\" alt=\"\"/></a>([\\s\\S]*)<div class=\"entry_footer\">");
-                Pattern newsabstract = Pattern.compile("class=\"topic_img\" alt=\"\"/></a>(.+?)<div class=\"entry_footer\">");
+                //Pattern newsabstract = Pattern.compile("class=\"topic_img\" alt=\"\"/></a>(.+?)<div class=\"entry_footer\">");
+                Pattern newsabstract = Pattern.compile("<div class=\"entry_summary\" style=\"display: block;\">(.+?)<div class=\"entry_footer\">");
                 Matcher newsabstractMatcher = newsabstract.matcher(focus_news);
                 while (newsabstractMatcher.find()) {
                     String nabstract = newsabstractMatcher.group(1);
                     if (nabstract != null) {
                         //去除首位空格
-                        String tri_nabstract = nabstract.trim().replaceAll("</div>", "");
+                        String tri_nabstract = nabstract.trim()
+                                .replaceAll("<a href=\"(.+?)</a>","")//去除有图片的连接文字
+                                .replaceAll("</div>", "")
+                                .replaceAll("<a href=\"", "")
+                                .replaceAll("</a>", "");
                         logger.info("文章摘要：" + tri_nabstract);
                         abs_text.add(tri_nabstract);
                     }

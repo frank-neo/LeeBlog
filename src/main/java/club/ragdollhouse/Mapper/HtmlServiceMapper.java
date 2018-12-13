@@ -22,12 +22,18 @@ public interface HtmlServiceMapper {
             "(SELECT title,picture_link,abstracts,works_link FROM home_page_manager WHERE TYPE = 'B4' ORDER BY id DESC LIMIT 1)")
     List<BackConsole> titleRelaoad();
 
-    //咨询
-    @Select("(SELECT title,DATE,abstracts,works_link FROM home_page_manager WHERE TYPE = 'Z1' ORDER BY id DESC LIMIT 1)\n" +
+    //资讯
+    @Select("(SELECT title,DATE,abstracts,works_link FROM home_page_manager WHERE TYPE = 'Z1' ORDER BY id DESC LIMIT 0,1)\n" +
             "UNION ALL\n" +
-            "(SELECT title,DATE,abstracts,works_link FROM home_page_manager WHERE TYPE = 'Z2' ORDER BY id DESC LIMIT 1)\n" +
+            "(SELECT title,DATE,abstracts,works_link FROM home_page_manager WHERE TYPE = 'Z2' ORDER BY id DESC LIMIT 0,1)\n" +
             "UNION ALL\n" +
-            "(SELECT title,DATE,abstracts,works_link FROM home_page_manager WHERE TYPE = 'Z3' ORDER BY id DESC LIMIT 1)")
+            "(SELECT title,DATE,abstracts,works_link FROM home_page_manager WHERE TYPE = 'Z3' ORDER BY id DESC LIMIT 0,1)\n" +
+            "UNION ALL\n" +
+            "(SELECT title,DATE,abstracts,works_link FROM home_page_manager WHERE TYPE = 'Z1' ORDER BY id DESC LIMIT 1,1)\n" +
+            "UNION ALL\n" +
+            "(SELECT title,DATE,abstracts,works_link FROM home_page_manager WHERE TYPE = 'Z2' ORDER BY id DESC LIMIT 1,1)\n" +
+            "UNION ALL\n" +
+            "(SELECT title,DATE,abstracts,works_link FROM home_page_manager WHERE TYPE = 'Z3' ORDER BY id DESC LIMIT 1,1)")
     List<BackConsole> ziXunReload();
 
     //推博

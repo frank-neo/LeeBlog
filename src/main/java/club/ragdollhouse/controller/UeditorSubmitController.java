@@ -34,7 +34,7 @@ public class UeditorSubmitController {
         //博客文本主体。
         String blogcontent = req.getParameter("blogcontent");
         //博客概要
-        String samary = blogcontent.substring(0, 180);
+        String samary = req.getParameter("samary");
 
         //开始正则替换图片路径暂时不做，因为只对我一个人开放编辑
         //审核逻辑也pass掉
