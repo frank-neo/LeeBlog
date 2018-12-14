@@ -24,7 +24,7 @@ public interface NewsInfoDao {
     int countNews(@Param("date") String date);
 
     //新闻tag列表
-    @Select("SELECT DISTINCT tag,\"icon-tag\" AS classes FROM reptilia_check")
+    @Select("SELECT DISTINCT rep_time,tag,\"icon-tag\" AS classes FROM reptilia_check WHERE rep_time > DATE_SUB(CURDATE(), INTERVAL 10 DAY) ORDER BY rep_time DESC LIMIT 0,20")
     List<TagPojo> tagList();
 
     @Select("SELECT title,url_addr,content FROM reptilia_check WHERE id = #{id}")

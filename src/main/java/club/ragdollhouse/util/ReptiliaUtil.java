@@ -1,6 +1,7 @@
 package club.ragdollhouse.util;
 
 import club.ragdollhouse.pojo.ReptiliaCheck;
+import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -45,31 +46,42 @@ public class ReptiliaUtil {
         List<String> news_url = new ArrayList<String>();//文章地址
         List<String> news_body = new ArrayList<String>();//文章内容
         List<String> news_dates = new ArrayList<String>();//文章日期
-
+        List<String> news_tags = new ArrayList<>();//文章标签
         //爬虫时间戳
         String repTime = DateUtil.timeStamp2Date(DateUtil.timeStamp(), "yyyy-MM-dd HH:mm:ss");
 
         if (matcher_ulist.find()) {
             focus_news = matcher_ulist.group(1);
-            //logger.info("=========================正在爬取新闻内容==============================");
-            System.out.println("=========================正在爬取新闻内容==============================");
-            //System.out.println("============================================>"+focus_news);
+            logger.info("=========================正在爬取新闻内容==============================");
             //从焦点新闻里面进行明细匹配
             Pattern focusNewsTitle = Pattern.compile("<h2 class=\"news_entry\">(.+?)</a>");
             if (focus_news != null) {
                 Matcher focusNewsTitleMatcher = focusNewsTitle.matcher(focus_news);
                 while (focusNewsTitleMatcher.find()) {
-                    //爬虫审核对象
-                    ReptiliaCheck reptiliaCheck = new ReptiliaCheck();
                     //标题
                     String newsTitle = focusNewsTitleMatcher.group(1);
                     if (newsTitle != null) {
+                        //截取标题
                         String newsTitleSon = newsTitle.trim().substring(37);
                         logger.info("文章标题：" + newsTitleSon);
                         news_Titles.add(newsTitleSon);
                     }
                 }
-
+                //文章摘要
+                Pattern tags_pattern = Pattern.compile("<span class=\"view\">(.+?)发布于");
+                Matcher tags_matcher = tags_pattern.matcher(focus_news);
+                while (tags_matcher.find()){
+                    String tagrang = tags_matcher.group(1);
+                    Pattern tag_pattern = Pattern.compile("class=\"gray\">(.+?)</a>");
+                    Matcher tag_matcher = tag_pattern.matcher(tagrang);
+                    if (tag_matcher.find()){
+                        String tag = tag_matcher.group(1);
+                        logger.info("文章标签："+ tag);
+                        news_tags.add(tag);
+                    }
+                    logger.info("文章标签："+ "未知");
+                    news_tags.add("未知");
+                }
                 //开始爬文章摘要
                 //Pattern newsabstract = Pattern.compile("class=\"topic_img\" alt=\"\"/></a>([\\s\\S]*)<div class=\"entry_footer\">");
                 //Pattern newsabstract = Pattern.compile("class=\"topic_img\" alt=\"\"/></a>(.+?)<div class=\"entry_footer\">");
@@ -111,7 +123,7 @@ public class ReptiliaUtil {
                                     logger.info("新闻文本内容：" + newsContent);
                                     news_body.add(newsContent);
                                     news_dates.add(repTime);
-                                    logger.info("---------------->爬虫时间：" + repTime);
+                                    logger.info("爬虫时间：" + repTime);
                                 }
                             }
                         }
@@ -119,7 +131,6 @@ public class ReptiliaUtil {
                 }
                 //循环封装list_r
                 int newssizes = news_Titles.size();
-                //System.out.println("|||||||||||||||||||||||||||||||||爬虫数组的长度为："+newssizes);
                 for (int i = 0; i < newssizes; i++) {
                     ReptiliaCheck rc = new ReptiliaCheck();
                     rc.setTitle(news_Titles.get(i));
@@ -127,8 +138,8 @@ public class ReptiliaUtil {
                     rc.setUrl_addr(news_url.get(i));
                     rc.setContent(news_body.get(i));
                     rc.setRep_time(news_dates.get(i));
+                    rc.setTag(news_tags.get(i));
                     list_r.add(rc);
-                    //System.out.println("======================================>此时i的值为："+i);
                 }
             }
         }
