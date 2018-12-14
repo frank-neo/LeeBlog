@@ -54,5 +54,10 @@ public class htmlController {
         model.addAttribute("tuiboList",tuiboList);
         return "index";
     }
+    //关于我们
+    @RequestMapping(value = "/aboutus",method = RequestMethod.GET)
+    public String aboutus(){
+        return "aboutus";
+    }
 
 }
