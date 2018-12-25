@@ -49,17 +49,16 @@ logging:
 #ueditor参数配置
 ueditor:
   #图片编辑暂存路径
-  path: C:/ueditor_img/testuedit_image
-  #path: /usr/staticfile/file/editorimg
+  #path: C:/ueditor_img/testuedit_image
+  path: /usr/staticfile/file/editorimg
   #编辑图片预览地址
-  viewurl: http://127.0.0.1:8099/testuedit_image/
-  #viewurl: http://ragdollhouse.club:8099/file/editorimg/
-
+  #viewurl: http://127.0.0.1:8099/testuedit_image/
+  viewurl: http://ragdollhouse.club:8099/file/editorimg/
 
 #首页图片上传路径
 homepage:
   #上传路径
-  path: C:/ueditor_img/indexpage
-  #path: /usr/staticfile/file/indexpage
-  viewurl: http://127.0.0.1:8099/indexpage/
-  #viewurl: http://ragdollhouse.club:8099/file/indexpage/
+  #path: C:/ueditor_img/indexpage
+  path: /usr/staticfile/file/indexpage
+  #viewurl: http://127.0.0.1:8099/indexpage/
+  viewurl: http://ragdollhouse.club:8099/file/indexpage/

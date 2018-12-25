@@ -112,21 +112,19 @@
         </div>
         <!--home intro ends-->
         <div class="container">
-            <ul th:each="riTuiLists,iterStat : ${riTuiList}">
-            <div th:class="'one-third'">
+            <div th:class="'one-third'" th:each="riTuiLists,iterStat : ${riTuiList}">
                 <div th:class="'feature-block'"><!-- features blocks starts -->
                     <div th:class="'feature-block-title'">
                         <div th:class="'feature-block-icon'">
                             <i th:class="'icon-lightbulb'"></i><span></span>
                         </div>
-                        <a th:href="${riTuiLists.getWorks_link()}"><h4 th:text="${riTuiLists.getTitle()}"></h4></a>
+                        <a th:href="${riTuiLists.getWorks_link()}"><h4 th:text="${riTuiLists.getTitle()}" th:style="'line-height:18px;'"></h4></a>
                         <h6 th:text="${riTuiLists.getDate()}"></h6>
                     </div>
                     <p th:text="${riTuiLists.getAbstracts()}">
                     </p>
                 </div>
             </div>
-            </ul>
         </div>
 
         <div class="intro-features"><!-- intro features panel starts -->
